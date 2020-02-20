@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="mare nubium">
 <meta property="og:description" content="1. 표현식과 문(값, 리터럴, 표현식, 문, 세미콜론, 표현식인 문과 표현식이 아닌 문.) 1. 값 (value) 값은 식(표현식, expression)이 평가(evaluate)되어 생성된 결과. var sum &#x3D; 10 + 20; 에서 10 + 20 은 식, 숫자 값 30이 생성되어 값으로 저장된다.  2. 리터럴 (literal) 사람이 이해할 수 있는">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-10T03:44:18.000Z">
-<meta property="article:modified_time" content="2020-02-20T11:05:15.723Z">
+<meta property="article:published_time" content="2020-02-20T11:05:15.000Z">
+<meta property="article:modified_time" content="2020-02-20T11:08:37.416Z">
 <meta property="article:author" content="mare nubium">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="front-end">
 <meta property="article:tag" content="javascript">
+<meta property="article:tag" content="blog">
 <meta property="article:tag" content="js">
+<meta property="article:tag" content="front-end">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-expression-statement/">
@@ -170,16 +170,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2020-02-10 12:44:18" itemprop="dateCreated datePublished" datetime="2020-02-10T12:44:18+09:00">2020-02-10</time>
+              <time title="Created: 2020-02-20 20:05:15 / Modified: 20:08:37" itemprop="dateCreated datePublished" datetime="2020-02-20T20:05:15+09:00">2020-02-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-02-20 20:05:15" itemprop="dateModified" datetime="2020-02-20T20:05:15+09:00">2020-02-20</time>
-              </span>
 
           
 
@@ -224,19 +218,15 @@
 <li>단, 0개 이상의 문을 중괄호로 묶은 코드 블록 {…} 뒤에는 세미콜론을 붙이지 않는다. 이들 코드 블록은 자체 종결성(self closing)을 갖기때문.</li>
 <li>세미콜론은 생략 가능. 자바스크립트 엔진이 문의 끝이라고 예측되는 지점에 세미콜론 자동 삽입 기능 (ASI, automatic semicolon insertion) 이 암묵적으로 수행됨.</li>
 </ul>
-<h2 id="6-표현식인-문과-표현식이-아닌-문"><a href="#6-표현식인-문과-표현식이-아닌-문" class="headerlink" title="6. 표현식인 문과 표현식이 아닌 문"></a>6. 표현식인 문과 표현식이 아닌 문</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>변수 선언문은 값으로 평가될 수 없으므로 표현식이 아닌 문이다. 값처럼 사용할 수 없다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 1 + 2;</span><br></pre></td></tr></table></figure></li>
+<h2 id="6-표현식인-문과-표현식이-아닌-문"><a href="#6-표현식인-문과-표현식이-아닌-문" class="headerlink" title="6. 표현식인 문과 표현식이 아닌 문"></a>6. 표현식인 문과 표현식이 아닌 문</h2><ul>
+<li>변수 선언문은 값으로 평가될 수 없으므로 표현식이 아닌 문이다. 값처럼 사용할 수 없다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var x;</span><br></pre></td></tr></table></figure></li>
 <li>1, 2, 1 + 2, x = 1 + 2는 표현식이다. 값처럼 사용할 수 있다.</li>
-<li>x = 1 + 2; 는 표현식이면서 완전한 문이기도 하다.</li>
+<li>x = 1 + 2; 는 표현식이면서 완전한 문이기도 하다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; 1 + 2;</span><br></pre></td></tr></table></figure></li>
 <li>구별방법 : 변수에 할당해 보는 것. 표현식인 문은 값으로 평가되므로 변수에 할당할 수 있다. 하지만 표현식이 아닌 문은 값으로 평가할 수 없으므로 에러가 발생한다.</li>
 </ul>
-<ul>
-<li>완료 값 (Completion value)<ul>
+<h3 id="완료-값-Completion-value"><a href="#완료-값-Completion-value" class="headerlink" title="* 완료 값 (Completion value)"></a>* 완료 값 (Completion value)</h3><ul>
 <li>표현식이 아닌 문은 완료 값 undefined를 반환.</li>
 <li>표현식인 문은 언제나 평가된 값을 출력.</li>
-</ul>
-</li>
 </ul>
 
     </div>
@@ -247,10 +237,10 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/blog/" rel="tag"># blog</a>
-              <a href="/tags/front-end/" rel="tag"># front-end</a>
               <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
               <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/front-end/" rel="tag"># front-end</a>
           </div>
 
         
@@ -259,13 +249,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/hello-world/" rel="prev" title="Hello World">
-      <i class="fa fa-chevron-left"></i> Hello World
+    <a href="/2020/02/post/" rel="prev" title="first blog post">
+      <i class="fa fa-chevron-left"></i> first blog post
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/post/" rel="next" title="first blog post">
-      first blog post <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -325,7 +312,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-표현식과-문"><span class="nav-number">1.</span> <span class="nav-text">1. 표현식과 문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-값-value"><span class="nav-number">1.1.</span> <span class="nav-text">1. 값 (value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-리터럴-literal"><span class="nav-number">1.2.</span> <span class="nav-text">2. 리터럴 (literal)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-표현식-expression"><span class="nav-number">1.3.</span> <span class="nav-text">3. 표현식 (expression)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-문-statement"><span class="nav-number">1.4.</span> <span class="nav-text">4. 문 (statement)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-세미콜론과-세미콜론-자동-삽입-기능"><span class="nav-number">1.5.</span> <span class="nav-text">5. 세미콜론과 세미콜론 자동 삽입 기능</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-표현식인-문과-표현식이-아닌-문"><span class="nav-number">1.6.</span> <span class="nav-text">6. 표현식인 문과 표현식이 아닌 문</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-표현식과-문"><span class="nav-number">1.</span> <span class="nav-text">1. 표현식과 문</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-값-value"><span class="nav-number">1.1.</span> <span class="nav-text">1. 값 (value)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-리터럴-literal"><span class="nav-number">1.2.</span> <span class="nav-text">2. 리터럴 (literal)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-표현식-expression"><span class="nav-number">1.3.</span> <span class="nav-text">3. 표현식 (expression)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-문-statement"><span class="nav-number">1.4.</span> <span class="nav-text">4. 문 (statement)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-세미콜론과-세미콜론-자동-삽입-기능"><span class="nav-number">1.5.</span> <span class="nav-text">5. 세미콜론과 세미콜론 자동 삽입 기능</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-표현식인-문과-표현식이-아닌-문"><span class="nav-number">1.6.</span> <span class="nav-text">6. 표현식인 문과 표현식이 아닌 문</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#완료-값-Completion-value"><span class="nav-number">1.6.1.</span> <span class="nav-text">* 완료 값 (Completion value)</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
