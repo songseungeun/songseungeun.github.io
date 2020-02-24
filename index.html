@@ -142,6 +142,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/review-js-expression-datatype/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mare nubium">
+      <meta itemprop="description" content="Front-end web development를 공부합니다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mare nubium">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/review-js-expression-datatype/" class="post-title-link" itemprop="url">review - 'js/expression&datatype'</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-02-24 19:29:21 / Modified: 19:36:44" itemprop="dateCreated datePublished" datetime="2020-02-24T19:29:21+09:00">2020-02-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/" itemprop="url" rel="index">
+                    <span itemprop="name">Learn web development</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/review/" itemprop="url" rel="index">
+                    <span itemprop="name">review</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/review/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="자바스크립트-복습-리터럴-표현식과-문-데이터-타입"><a href="#자바스크립트-복습-리터럴-표현식과-문-데이터-타입" class="headerlink" title="자바스크립트 복습 - 리터럴, 표현식과 문, 데이터 타입"></a>자바스크립트 복습 - 리터럴, 표현식과 문, 데이터 타입</h1><h3 id="1-리터럴"><a href="#1-리터럴" class="headerlink" title="1. 리터럴"></a>1. 리터럴</h3><p>사람이 이해할 수 있는 문자나 기호를 이용해 값을 생성하는 표기 방식.<br>컴퓨터 자체의 언어로 코드를 사용하면 비효율적이니 사람들끼리 미리 약속해서 값을 생성할때 이런 표기법을 쓰자고 만든 것.<br>숫자 정수 문자열 불리언 null undefined 객체 배열 함수 정규표현식 리터럴</p>
+<h3 id="2-표현식인-문과-표현식이-아닌-문"><a href="#2-표현식인-문과-표현식이-아닌-문" class="headerlink" title="2. 표현식인 문과 표현식이 아닌 문"></a>2. 표현식인 문과 표현식이 아닌 문</h3><p>값으로 평가될 수 있는 문, 표현식이 평가되면 값을 생성하거나 참조.<br>그래서 1+2=3 이 동치인 것처럼 표현식=값이므로 값이 들어가는 자리에 표현식을 모두 넣을 수 있고,<br>표현식인 문과 아닌 문을 구별할 때 변수에 할당해보면 값이 들어가는 자리에 표현식이 들어가는 것이므로 오류가 없다면 표현식이 맞다.</p>
+<h3 id="3-데이터-타입"><a href="#3-데이터-타입" class="headerlink" title="3. 데이터 타입"></a>3. 데이터 타입</h3><p>7개의 데이터 타입<br>원시타입 / 객체타입<br>숫자 문자열(템플릿 리터럴) null undefined 불리언 symbol / 객체</p>
+<ul>
+<li><p>숫자타입<br>다 실수. 정수도 뒤에 .0이 있다고 생각하면 됨.<br>infinity 양무한대 -infinity 음무한대 NaN not a number</p>
+</li>
+<li><p>문자열타입<br>16비트 유니코드, 큰 따옴표 작은 따옴표 백틱 사용<br>템플릿 리터럴은<br>백틱 안에 사용하고 개행, 화이트스페이스, 공백을 모두 적용됨<br>표현식 삽입으로 문자열로 표현할 수 있고 가독성 좋고 간편하다.</p>
+</li>
+<li><p>불리언타입<br>true false</p>
+</li>
+<li><p>undefined<br>아직 값이 설정되지 않은 것을 의미<br>변수를 초기화 할때 자바스크립트 엔진에서 사용하는 것이므로 일부러 쓰지는 않고<br>값이 없다고 고의적으로 설정할 때는 null을 쓴다<br>null을 쓰면 변수가 이전에 참조하던 값을 더이상 참조하지 않겠다는 의미</p>
+</li>
+<li><p>symbol<br>es6 추가된 데이터타입.<br>이름의 충돌 위험이 없는 객체의 유일한 프로퍼티 키를 만들기 위해 사용</p>
+</li>
+<li><p>객체</p>
+</li>
+</ul>
+<h3 id="4-데이터-타입이-필요한-이유는"><a href="#4-데이터-타입이-필요한-이유는" class="headerlink" title="4. 데이터 타입이 필요한 이유는"></a>4. 데이터 타입이 필요한 이유는</h3><p>값을 저장할 때 확보해야하는 메모리 공간의 크기를 결정하기 위해<br>값을 참조할 때 한번에 읽어들여야 하는 메모리 크기를 알기 위해서<br>메모리에서 읽어들인 2진수를 어떻게 해석해야 하는지 결정하기 위해<br>예를 들어서 0100 0001 이 2진수를 해석하면 65가 될 수도 있고, A가 될 수도 있다.<br>값을 참조할 때 데이터타입으로 숫자 타입인 65로 부를지, 문자열 타입인 A로 부를지 결정하는 것.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="en">
     <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/review-js-variable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1117,7 +1216,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
