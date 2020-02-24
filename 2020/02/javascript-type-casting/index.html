@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="자바스크립트 복습 - 변수1. 변수하나의 값을 저장하기 위해 확보한 메모리 공간 또는 그 공간의 메모리주소로 연결하기 위해 붙인 이름.변수가 필요한 이유 - 연산하거나 등. 저장해 둔 값을 재사용하기 위해서.변수에 값을 저장하는 것을 할당, 값을 읽어들이는 것을 참조. 2. 식별자어떤 값을 구분하기 위해 붙인 고유한 이름.값이 아니라 메모리주소를 기억하고">
+  <meta name="description" content="1. 타입 변환과 단축 평가1-1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것. 1-2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.    명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="review - &#39;js&#x2F;variable&#39;">
-<meta property="og:url" content="https://songseungeun.github.io/2020/02/review-js-variable/index.html">
+<meta property="og:title" content="javascript - type casting">
+<meta property="og:url" content="https://songseungeun.github.io/2020/02/javascript-type-casting/index.html">
 <meta property="og:site_name" content="mare nubium">
-<meta property="og:description" content="자바스크립트 복습 - 변수1. 변수하나의 값을 저장하기 위해 확보한 메모리 공간 또는 그 공간의 메모리주소로 연결하기 위해 붙인 이름.변수가 필요한 이유 - 연산하거나 등. 저장해 둔 값을 재사용하기 위해서.변수에 값을 저장하는 것을 할당, 값을 읽어들이는 것을 참조. 2. 식별자어떤 값을 구분하기 위해 붙인 고유한 이름.값이 아니라 메모리주소를 기억하고">
+<meta property="og:description" content="1. 타입 변환과 단축 평가1-1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것. 1-2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.    명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-24T10:16:40.000Z">
-<meta property="article:modified_time" content="2020-02-24T10:21:36.073Z">
+<meta property="article:published_time" content="2020-02-24T10:39:14.000Z">
+<meta property="article:modified_time" content="2020-02-24T11:26:14.867Z">
 <meta property="article:author" content="mare nubium">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="blog">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="front-end">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://songseungeun.github.io/2020/02/review-js-variable/">
+<link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>review - 'js/variable' | mare nubium</title>
+  <title>javascript - type casting | mare nubium</title>
   
 
 
@@ -148,7 +148,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/review-js-variable/">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,7 +161,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          review - 'js/variable'
+          javascript - type casting
         </h1>
 
         <div class="post-meta">
@@ -172,7 +172,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-24 19:16:40 / Modified: 19:21:36" itemprop="dateCreated datePublished" datetime="2020-02-24T19:16:40+09:00">2020-02-24</time>
+              <time title="Created: 2020-02-24 19:39:14 / Modified: 20:26:14" itemprop="dateCreated datePublished" datetime="2020-02-24T19:39:14+09:00">2020-02-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -186,13 +186,7 @@
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learn-web-development/review/" itemprop="url" rel="index">
-                    <span itemprop="name">review</span>
-                  </a>
-                </span>
-                  , 
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learn-web-development/review/javascript/" itemprop="url" rel="index">
+                  <a href="/categories/Learn-web-development/javascript/" itemprop="url" rel="index">
                     <span itemprop="name">javascript</span>
                   </a>
                 </span>
@@ -209,14 +203,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="자바스크립트-복습-변수"><a href="#자바스크립트-복습-변수" class="headerlink" title="자바스크립트 복습 - 변수"></a>자바스크립트 복습 - 변수</h1><h3 id="1-변수"><a href="#1-변수" class="headerlink" title="1. 변수"></a>1. 변수</h3><p>하나의 값을 저장하기 위해 확보한 메모리 공간 또는 그 공간의 메모리주소로 연결하기 위해 붙인 이름.<br>변수가 필요한 이유 - 연산하거나 등. 저장해 둔 값을 재사용하기 위해서.<br>변수에 값을 저장하는 것을 할당, 값을 읽어들이는 것을 참조.</p>
-<h3 id="2-식별자"><a href="#2-식별자" class="headerlink" title="2. 식별자"></a>2. 식별자</h3><p>어떤 값을 구분하기 위해 붙인 고유한 이름.<br>값이 아니라 메모리주소를 기억하고 있음.<br>변수에 붙인 이름을 말하는데 클래스나 함수이름도 해당된다.</p>
-<h3 id="3-변수-선언"><a href="#3-변수-선언" class="headerlink" title="3. 변수 선언"></a>3. 변수 선언</h3><p>var let const 키워드를 사용해 값을 저장할 공간을 확보할 준비를 하는 것<br>변수를 선언하면 undefined 라는 값을 암묵적으로 할당</p>
-<h3 id="4-변수-호이스팅"><a href="#4-변수-호이스팅" class="headerlink" title="4. 변수 호이스팅"></a>4. 변수 호이스팅</h3><p>변수 선언은 코드 위치에 관계없이 런타임 실행 이전에 미리 읽어들이는 자바스크립트 만의 특징.<br>코드 위치를 강제로 바꾸는 것은 아니고 실행만 먼저 한다.</p>
-<h3 id="5-값의-할당"><a href="#5-값의-할당" class="headerlink" title="5. 값의 할당"></a>5. 값의 할당</h3><p>할당 연산자 = 를 사용하여 우변의 값을 좌변의 변수에 할당.<br>undefined는 그대로 유지하고 새로운 메모리 공간을 확보하고 할당값을 저장한다.</p>
-<h3 id="6-값의-재할당"><a href="#6-값의-재할당" class="headerlink" title="6. 값의 재할당"></a>6. 값의 재할당</h3><p>이미 값이 할당되어 있는 변수에 새로운 값을 또 다시 할당하는 것.<br>재할당이 안된다면 상수 const</p>
-<h3 id="7-식별자-네이밍-규칙"><a href="#7-식별자-네이밍-규칙" class="headerlink" title="7. 식별자 네이밍 규칙"></a>7. 식별자 네이밍 규칙</h3><p>카멜케이스<br>스네이크케이스<br>파스칼케이스<br>헝가리안케이스</p>
-<p>보통 카멜케이스를 가장 많이 사용한다.</p>
+        <h1 id="1-타입-변환과-단축-평가"><a href="#1-타입-변환과-단축-평가" class="headerlink" title="1. 타입 변환과 단축 평가"></a>1. 타입 변환과 단축 평가</h1><h2 id="1-1-타입-변환"><a href="#1-1-타입-변환" class="headerlink" title="1-1. 타입 변환"></a>1-1. 타입 변환</h2><ul>
+<li><p>명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.</p>
+<h2 id="1-2-암묵적-타입-변환"><a href="#1-2-암묵적-타입-변환" class="headerlink" title="1-2. 암묵적 타입 변환"></a>1-2. 암묵적 타입 변환</h2></li>
+<li><p>개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.</p>
+</li>
+</ul>
+<ul>
+<li><p>명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(=변경 불가능 한 값)을 직접 변경하는 것은 아니고,<br>다른 타입의 원시값을 새로 생성함.</p>
+<h3 id="A-문자열-타입으로-변환"><a href="#A-문자열-타입으로-변환" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
+<li>+연산자의 피연산자 중 하나 이상이 문자열이면 문자열 연결 연산자로 동작. 문자열이 아닌 피연산자를 문자열로 암묵적 타입 변환.</li>
+<li>피연산자 + ‘’ &gt; 문자열로 타입변환.</li>
+<li>symbol 타입의 경우만 TypeError.</li>
+</ul>
+<h3 id="B-숫자-타입으로-변환"><a href="#B-숫자-타입으로-변환" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
+<li>산술연산자의 피연산자 중에서 숫자타입이 아닌 피연산자를 숫자타입으로 암묵적 타입 변환.</li>
+<li>숫자타입으로 변환이 안 될 경우에는 NaN 반환.</li>
+<li>비교연산자는 숫자 타입으로 암묵적 타입 변환 후 불리언 값으로 반환.</li>
+<li>+’string’, +undefined, +{}, +[10, 20], +(function(){}) &gt; NaN</li>
+<li>+Symbol() &gt; TypeError.</li>
+</ul>
+<h3 id="C-불리언-타입으로-변환"><a href="#C-불리언-타입으로-변환" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
+<li>조건식의 평가 결과를 불리언 타입으로 암묵적 타입 변환.</li>
+<li>불리언 타입이 아닌 값을 truthy 값(true), falsy 값(false)으로 구분하고 타입 변환.</li>
+</ul>
+<ul>
+<li>false로 평가되는 falsy 값.<br>: false, undefined, null, 0, -0, NaN, ‘’(빈문자열)<br>이 외는 모두 true로 평가되는 truthy 값.</li>
+</ul>
+<h2 id="1-3-명시적-타입-변환"><a href="#1-3-명시적-타입-변환" class="headerlink" title="1-3. 명시적 타입 변환"></a>1-3. 명시적 타입 변환</h2><h3 id="A-문자열-타입으로-변환-1"><a href="#A-문자열-타입으로-변환-1" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
+<li>string 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
+<li>Object.prototype.toString 메소드를 사용.</li>
+<li>문자열 연결 연산자를 이용.<br>(암묵적 타입 변환 방법을 이용해서 개발자의 의도로 사용.)</li>
+</ul>
+<h3 id="B-숫자-타입으로-변환-1"><a href="#B-숫자-타입으로-변환-1" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
+<li>Number 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
+<li>parseInt, parseFloat 함수를 사용하는 방법.<br>(문자열만 변환가능, ‘숫자’가 들어있는 문자열만 해당.)</li>
+<li>+단항 산술 연산자를 이용하는 방법.</li>
+<li>*산술 연산자를 이용하는 방법.</li>
+</ul>
+<h3 id="C-불리언-타입으로-변환-1"><a href="#C-불리언-타입으로-변환-1" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
+<li>Boolean 생성자 함수를 new 연산자 없이 호출하는 방법</li>
+<li>!부정 논리 연산자를 두 번 사용하는 방법</li>
+</ul>
+<h2 id="1-4-단축평가"><a href="#1-4-단축평가" class="headerlink" title="1-4. 단축평가"></a>1-4. 단축평가</h2></li>
+</ul>
+<ul>
+<li><p>&amp;&amp;, || 는 논리연산의 결과를 타입 변환하지 않고, 피연산자를 그대로 반환한다.</p>
+<h3 id="amp-amp-AND"><a href="#amp-amp-AND" class="headerlink" title="&amp;&amp; AND"></a>&amp;&amp; AND</h3><ul>
+<li>두 개의 피연산자가 모두 true 일 때 true.</li>
+<li>왼쪽 &gt; 오른쪽 평가 진행. </li>
+<li>‘Cat’ &amp;&amp; ‘Dog’ 경우 ‘’(빈 문자열) 외에 문자열은 truthy 값이고, ‘Cat’ 평가 후 ‘Dog’까지 평가해 truthy 이므로 마지막에 평가한 ‘Dog’를 반환함.</li>
+</ul>
+<h3 id="OR"><a href="#OR" class="headerlink" title="|| OR"></a>|| OR</h3><ul>
+<li>두 개의 피연산자 중 하나만 true 여도 true.</li>
+<li>왼쪽 &gt; 오른쪽 평가 진행.</li>
+<li>‘Cat’ || ‘Dog’ 경우 ‘Cat’ 만 평가해도 이미 true 이므로 바로 ‘Cat’ 을 반환.</li>
+</ul>
+</li>
+<li><p>단축평가를 사용하면 if문 대체 가능.</p>
+</li>
+<li><p>주어진 조건이 truthy 값 일 때 &amp;&amp;</p>
+</li>
+<li><p>주어진 조건이 false 값 일 때 ||</p>
+</li>
+</ul>
 
     </div>
 
@@ -238,13 +288,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/javascript-control-flow-statement/" rel="prev" title="javascript - control flow statement">
-      <i class="fa fa-chevron-left"></i> javascript - control flow statement
+    <a href="/2020/02/review-js-expression-datatype/" rel="prev" title="review - 'js/expression & datatype'">
+      <i class="fa fa-chevron-left"></i> review - 'js/expression & datatype'
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/review-js-expression-datatype/" rel="next" title="review - 'js/expression & datatype'">
-      review - 'js/expression & datatype' <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -304,7 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#자바스크립트-복습-변수"><span class="nav-number">1.</span> <span class="nav-text">자바스크립트 복습 - 변수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-변수"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 변수</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-식별자"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 식별자</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-변수-선언"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 변수 선언</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-변수-호이스팅"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 변수 호이스팅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-값의-할당"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 값의 할당</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-값의-재할당"><span class="nav-number">1.0.6.</span> <span class="nav-text">6. 값의 재할당</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-식별자-네이밍-규칙"><span class="nav-number">1.0.7.</span> <span class="nav-text">7. 식별자 네이밍 규칙</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-타입-변환과-단축-평가"><span class="nav-number">1.</span> <span class="nav-text">1. 타입 변환과 단축 평가</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-타입-변환"><span class="nav-number">1.1.</span> <span class="nav-text">1-1. 타입 변환</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-암묵적-타입-변환"><span class="nav-number">1.2.</span> <span class="nav-text">1-2. 암묵적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환"><span class="nav-number">1.2.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환"><span class="nav-number">1.2.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환"><span class="nav-number">1.2.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-명시적-타입-변환"><span class="nav-number">1.3.</span> <span class="nav-text">1-3. 명시적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-단축평가"><span class="nav-number">1.4.</span> <span class="nav-text">1-4. 단축평가</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#amp-amp-AND"><span class="nav-number">1.4.1.</span> <span class="nav-text">&amp;&amp; AND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OR"><span class="nav-number">1.4.2.</span> <span class="nav-text">|| OR</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
