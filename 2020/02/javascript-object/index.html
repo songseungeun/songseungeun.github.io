@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 타입 변환과 단축 평가1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.  2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.   명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.  A.">
+  <meta name="description" content="1. 객체 리터럴1. 객체란? 자바스크립트는 객체기반의 프로그래밍 언어. 원시 값을 제외한 나머지 값들 (함수, 배열, 정규 표현식) 은 모두 객체.   원시타입 &gt; 단 하나의 값 (변경 불가능한 값) 객체타입 &gt; 다양한 타입의 값들을 하나의 단위로 구성한 복합적인 자료구조 (변경 가능한 값)   객체 : 키, 값으로 구성된 프로퍼티의 집합. 모">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript - type casting">
-<meta property="og:url" content="https://songseungeun.github.io/2020/02/javascript-type-casting/index.html">
+<meta property="og:title" content="javascript-object">
+<meta property="og:url" content="https://songseungeun.github.io/2020/02/javascript-object/index.html">
 <meta property="og:site_name" content="mare nubium">
-<meta property="og:description" content="1. 타입 변환과 단축 평가1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.  2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.   명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.  A.">
+<meta property="og:description" content="1. 객체 리터럴1. 객체란? 자바스크립트는 객체기반의 프로그래밍 언어. 원시 값을 제외한 나머지 값들 (함수, 배열, 정규 표현식) 은 모두 객체.   원시타입 &gt; 단 하나의 값 (변경 불가능한 값) 객체타입 &gt; 다양한 타입의 값들을 하나의 단위로 구성한 복합적인 자료구조 (변경 가능한 값)   객체 : 키, 값으로 구성된 프로퍼티의 집합. 모">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-24T10:39:14.000Z">
-<meta property="article:modified_time" content="2020-02-24T12:07:15.572Z">
+<meta property="article:published_time" content="2020-02-24T11:27:53.000Z">
+<meta property="article:modified_time" content="2020-02-24T12:05:42.042Z">
 <meta property="article:author" content="mare nubium">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="blog">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="front-end">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
+<link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-object/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>javascript - type casting | mare nubium</title>
+  <title>javascript-object | mare nubium</title>
   
 
 
@@ -148,7 +148,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/javascript-object/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,7 +161,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          javascript - type casting
+          javascript-object
         </h1>
 
         <div class="post-meta">
@@ -172,7 +172,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-02-24 19:39:14 / Modified: 21:07:15" itemprop="dateCreated datePublished" datetime="2020-02-24T19:39:14+09:00">2020-02-24</time>
+              <time title="Created: 2020-02-24 20:27:53 / Modified: 21:05:42" itemprop="dateCreated datePublished" datetime="2020-02-24T20:27:53+09:00">2020-02-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -203,70 +203,69 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1-타입-변환과-단축-평가"><a href="#1-타입-변환과-단축-평가" class="headerlink" title="1. 타입 변환과 단축 평가"></a>1. 타입 변환과 단축 평가</h1><h2 id="1-타입-변환"><a href="#1-타입-변환" class="headerlink" title="1. 타입 변환"></a>1. 타입 변환</h2><ul>
-<li>명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.</li>
-</ul>
-<h2 id="2-암묵적-타입-변환"><a href="#2-암묵적-타입-변환" class="headerlink" title="2. 암묵적 타입 변환"></a>2. 암묵적 타입 변환</h2><ul>
-<li>개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.</li>
+        <h1 id="1-객체-리터럴"><a href="#1-객체-리터럴" class="headerlink" title="1. 객체 리터럴"></a>1. 객체 리터럴</h1><h2 id="1-객체란"><a href="#1-객체란" class="headerlink" title="1. 객체란?"></a>1. 객체란?</h2><ul>
+<li>자바스크립트는 객체기반의 프로그래밍 언어.</li>
+<li>원시 값을 제외한 나머지 값들 (함수, 배열, 정규 표현식) 은 모두 객체.</li>
 </ul>
 <ul>
-<li>명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(=변경 불가능 한 값)을 직접 변경하는 것은 아니고,<br>다른 타입의 원시값을 새로 생성함.</li>
-</ul>
-<h3 id="A-문자열-타입으로-변환"><a href="#A-문자열-타입으로-변환" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
-<li>+연산자의 피연산자 중 하나 이상이 문자열이면 문자열 연결 연산자로 동작. 문자열이 아닌 피연산자를 문자열로 암묵적 타입 변환.</li>
-<li>피연산자 + ‘’ &gt; 문자열로 타입변환.</li>
-<li>symbol 타입의 경우만 TypeError.</li>
-</ul>
-<h3 id="B-숫자-타입으로-변환"><a href="#B-숫자-타입으로-변환" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
-<li>산술연산자의 피연산자 중에서 숫자타입이 아닌 피연산자를 숫자타입으로 암묵적 타입 변환.</li>
-<li>숫자타입으로 변환이 안 될 경우에는 NaN 반환.</li>
-<li>비교연산자는 숫자 타입으로 암묵적 타입 변환 후 불리언 값으로 반환.</li>
-<li>+’string’, +undefined, +{}, +[10, 20], +(function(){}) &gt; NaN</li>
-<li>+Symbol() &gt; TypeError.</li>
-</ul>
-<h3 id="C-불리언-타입으로-변환"><a href="#C-불리언-타입으로-변환" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
-<li>조건식의 평가 결과를 불리언 타입으로 암묵적 타입 변환.</li>
-<li>불리언 타입이 아닌 값을 truthy 값(true), falsy 값(false)으로 구분하고 타입 변환.</li>
+<li>원시타입 &gt; 단 하나의 값 (변경 불가능한 값)</li>
+<li>객체타입 &gt; 다양한 타입의 값들을 하나의 단위로 구성한 복합적인 자료구조 (변경 가능한 값)</li>
 </ul>
 <ul>
-<li>false로 평가되는 falsy 값.<br>: false, undefined, null, 0, -0, NaN, ‘’(빈문자열)<br>이 외는 모두 true로 평가되는 truthy 값.</li>
+<li>객체 : 키, 값으로 구성된 프로퍼티의 집합.</li>
+<li>모든 값은 프로퍼티 값 가능.</li>
+<li>함수도 일급객체. 값으로 취급 가능. = 메소드 Method</li>
+<li>프로퍼티 &gt; 상태, 메소드 &gt; 동작으로 객체 구조화 할 수 있어 유용하다.</li>
 </ul>
-<h2 id="3-명시적-타입-변환"><a href="#3-명시적-타입-변환" class="headerlink" title="3. 명시적 타입 변환"></a>3. 명시적 타입 변환</h2><h3 id="A-문자열-타입으로-변환-1"><a href="#A-문자열-타입으로-변환-1" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
-<li>string 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
-<li>Object.prototype.toString 메소드를 사용.</li>
-<li>문자열 연결 연산자를 이용.<br>(암묵적 타입 변환 방법을 이용해서 개발자의 의도로 사용.)</li>
+<h2 id="2-객체-리터럴에-의한-객체-생성"><a href="#2-객체-리터럴에-의한-객체-생성" class="headerlink" title="2. 객체 리터럴에 의한 객체 생성"></a>2. 객체 리터럴에 의한 객체 생성</h2><ul>
+<li>자바스크립트는 프로토타입 기반 객체지향 언어로, 다양한 객체 생성 방법이 존재한다.</li>
+<li>객체 리터럴, Object 생성자 함수, 생성자 함수, Object.create 메소드, 클래스(ES6)</li>
+<li>객체 리터럴 : 객체를 생성하는 표기법. 값으로 평가되는 표현식. {} 내에 프로퍼티를 정의. 코드블록이 아니므로 ; 세미콜론 붙여야 함.</li>
 </ul>
-<h3 id="B-숫자-타입으로-변환-1"><a href="#B-숫자-타입으로-변환-1" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
-<li>Number 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
-<li>parseInt, parseFloat 함수를 사용하는 방법.<br>(문자열만 변환가능, ‘숫자’가 들어있는 문자열만 해당.)</li>
-<li>+단항 산술 연산자를 이용하는 방법.</li>
-<li>*산술 연산자를 이용하는 방법.</li>
+<h2 id="3-프로퍼티"><a href="#3-프로퍼티" class="headerlink" title="3. 프로퍼티"></a>3. 프로퍼티</h2><ul>
+<li>객체는 프로퍼티들의 집합.</li>
+<li>키, 값으로 구성하고 쉼표로 구분.</li>
 </ul>
-<h3 id="C-불리언-타입으로-변환-1"><a href="#C-불리언-타입으로-변환-1" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
-<li>Boolean 생성자 함수를 new 연산자 없이 호출하는 방법</li>
-<li>!부정 논리 연산자를 두 번 사용하는 방법</li>
+<ul>
+<li>프로퍼티 키 &gt; 모든 문자열 or Symbol 값. 식별자 역할. 식별자 네이밍 규칙을 따르지 않은 이름에는 ‘’ 사용. 문자열이나 Symbol값 이외의 값을 사용하면 암묵적 타입 변환에 의해 문자열로 변환됨.</li>
+<li>프로퍼티 값 &gt; 자바스크립트에서 사용가능한 모든 값.</li>
 </ul>
-<h2 id="4-단축평가"><a href="#4-단축평가" class="headerlink" title="4. 단축평가"></a>4. 단축평가</h2><ul>
-<li>&amp;&amp;, || 는 논리연산의 결과를 타입 변환하지 않고, 피연산자를 그대로 반환한다.</li>
+<ul>
+<li>중복 선언하면 나중에 선언한 키를 덮어씀.</li>
 </ul>
-<h3 id="amp-amp-AND"><a href="#amp-amp-AND" class="headerlink" title="&amp;&amp; AND"></a>&amp;&amp; AND</h3><ul>
-<li>두 개의 피연산자가 모두 true 일 때 true.</li>
-<li>왼쪽 &gt; 오른쪽 평가 진행. </li>
-<li>‘Cat’ &amp;&amp; ‘Dog’ 경우 ‘’(빈 문자열) 외에 문자열은 truthy 값이고, ‘Cat’ 평가 후 ‘Dog’까지 평가해 truthy 이므로 마지막에 평가한 ‘Dog’를 반환함.</li>
+<h2 id="4-메소드"><a href="#4-메소드" class="headerlink" title="4. 메소드"></a>4. 메소드</h2><ul>
+<li>자바스크립트에서 사용할 수 있는 모든 값 &gt; 프로퍼티 값 사용 가능.</li>
+<li>함수 &gt; 값으로 취급 가능.</li>
+<li>그러므로, 함수 &gt; 프로퍼티 값으로 사용가능.</li>
+<li>객체에 있는 함수는 메소드라 부른다.</li>
 </ul>
-<h3 id="OR"><a href="#OR" class="headerlink" title="|| OR"></a>|| OR</h3><ul>
-<li><p>두 개의 피연산자 중 하나만 true 여도 true.</p>
-</li>
-<li><p>왼쪽 &gt; 오른쪽 평가 진행.</p>
-</li>
-<li><p>‘Cat’ || ‘Dog’ 경우 ‘Cat’ 만 평가해도 이미 true 이므로 바로 ‘Cat’ 을 반환.</p>
-</li>
-<li><p>단축평가를 사용하면 if문 대체 가능.</p>
-</li>
-<li><p>주어진 조건이 truthy 값 일 때 &amp;&amp;</p>
-</li>
-<li><p>주어진 조건이 false 값 일 때 ||</p>
-</li>
+<h2 id="5-프로퍼티-접근"><a href="#5-프로퍼티-접근" class="headerlink" title="5. 프로퍼티 접근"></a>5. 프로퍼티 접근</h2><ul>
+<li>마침표 표기법: 객체표현식.프로퍼티키 (ex/ person.name)</li>
+<li>대괄호 표기법: 객체표현식[‘프로퍼티키’] (ex/ person[‘name’])</li>
+</ul>
+<ul>
+<li>[‘’] 따옴표로 감싸지 않으면 식별자로 해석 &gt; Reference Error</li>
+<li>객체에 존재하지 않는 프로퍼티에 접근하면 &gt; undefined</li>
+</ul>
+<h2 id="6-프로퍼티-값-갱신"><a href="#6-프로퍼티-값-갱신" class="headerlink" title="6. 프로퍼티 값 갱신"></a>6. 프로퍼티 값 갱신</h2><ul>
+<li>이미 존재하는 프로퍼티에 값을 할당하면 프로퍼티 값이 갱신됨.</li>
+<li>##3 에서 언급했던 중복 선언 이야기인 듯.</li>
+</ul>
+<h2 id="7-프로퍼티-동적-생성"><a href="#7-프로퍼티-동적-생성" class="headerlink" title="7. 프로퍼티 동적 생성"></a>7. 프로퍼티 동적 생성</h2><ul>
+<li>존재하지 않는 프로퍼티에 값을 할당하면 동적으로 생성, 추가되고 프로퍼티 값이 할당됨.</li>
+</ul>
+<h2 id="8-프로퍼티-삭제"><a href="#8-프로퍼티-삭제" class="headerlink" title="8. 프로퍼티 삭제"></a>8. 프로퍼티 삭제</h2><ul>
+<li>delete 연산자는 객체의 프로퍼티를 삭제한다.</li>
+</ul>
+<h2 id="9-ES6에서-추가된-객체-리터럴의-확장-기능"><a href="#9-ES6에서-추가된-객체-리터럴의-확장-기능" class="headerlink" title="9. ES6에서 추가된 객체 리터럴의 확장 기능"></a>9. ES6에서 추가된 객체 리터럴의 확장 기능</h2><h3 id="A-프로퍼티-축약-표현"><a href="#A-프로퍼티-축약-표현" class="headerlink" title="A. 프로퍼티 축약 표현"></a>A. 프로퍼티 축약 표현</h3><ul>
+<li>변수 이름과 프로퍼티 키가 동일한 이름일 때, 프로퍼티 키 생략가능. 프로퍼티 키는 변수 이름으로 자동생성됨.</li>
+</ul>
+<h3 id="B-프로퍼티-키-동적-생성"><a href="#B-프로퍼티-키-동적-생성" class="headerlink" title="B. 프로퍼티 키 동적 생성"></a>B. 프로퍼티 키 동적 생성</h3><ul>
+<li>프로퍼티 키 동적 생성 (계산된 프로퍼티 이름) : 프로퍼티 키로 사용할 표현식을 [] 대괄호로 묶는다.</li>
+</ul>
+<h3 id="C-메소드-축약-표현"><a href="#C-메소드-축약-표현" class="headerlink" title="C. 메소드 축약 표현"></a>C. 메소드 축약 표현</h3><ul>
+<li>프로퍼티 값으로 함수를 할당해 메소드를 정의.</li>
+<li>ES6 : function 키워드를 생략해 축약표현. 프로퍼티에 할당한 함수와 다르게 동작.</li>
 </ul>
 
     </div>
@@ -289,13 +288,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/review-js-expression-datatype/" rel="prev" title="review - 'js/expression & datatype'">
-      <i class="fa fa-chevron-left"></i> review - 'js/expression & datatype'
+    <a href="/2020/02/javascript-type-casting/" rel="prev" title="javascript - type casting">
+      <i class="fa fa-chevron-left"></i> javascript - type casting
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/javascript-object/" rel="next" title="javascript-object">
-      javascript-object <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -355,7 +351,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-타입-변환과-단축-평가"><span class="nav-number">1.</span> <span class="nav-text">1. 타입 변환과 단축 평가</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-타입-변환"><span class="nav-number">1.1.</span> <span class="nav-text">1. 타입 변환</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-암묵적-타입-변환"><span class="nav-number">1.2.</span> <span class="nav-text">2. 암묵적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환"><span class="nav-number">1.2.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환"><span class="nav-number">1.2.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환"><span class="nav-number">1.2.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-명시적-타입-변환"><span class="nav-number">1.3.</span> <span class="nav-text">3. 명시적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-단축평가"><span class="nav-number">1.4.</span> <span class="nav-text">4. 단축평가</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#amp-amp-AND"><span class="nav-number">1.4.1.</span> <span class="nav-text">&amp;&amp; AND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OR"><span class="nav-number">1.4.2.</span> <span class="nav-text">|| OR</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-객체-리터럴"><span class="nav-number">1.</span> <span class="nav-text">1. 객체 리터럴</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-객체란"><span class="nav-number">1.1.</span> <span class="nav-text">1. 객체란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-객체-리터럴에-의한-객체-생성"><span class="nav-number">1.2.</span> <span class="nav-text">2. 객체 리터럴에 의한 객체 생성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-프로퍼티"><span class="nav-number">1.3.</span> <span class="nav-text">3. 프로퍼티</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-메소드"><span class="nav-number">1.4.</span> <span class="nav-text">4. 메소드</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-프로퍼티-접근"><span class="nav-number">1.5.</span> <span class="nav-text">5. 프로퍼티 접근</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-프로퍼티-값-갱신"><span class="nav-number">1.6.</span> <span class="nav-text">6. 프로퍼티 값 갱신</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-프로퍼티-동적-생성"><span class="nav-number">1.7.</span> <span class="nav-text">7. 프로퍼티 동적 생성</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-프로퍼티-삭제"><span class="nav-number">1.8.</span> <span class="nav-text">8. 프로퍼티 삭제</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-ES6에서-추가된-객체-리터럴의-확장-기능"><span class="nav-number">1.9.</span> <span class="nav-text">9. ES6에서 추가된 객체 리터럴의 확장 기능</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-프로퍼티-축약-표현"><span class="nav-number">1.9.1.</span> <span class="nav-text">A. 프로퍼티 축약 표현</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-프로퍼티-키-동적-생성"><span class="nav-number">1.9.2.</span> <span class="nav-text">B. 프로퍼티 키 동적 생성</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-메소드-축약-표현"><span class="nav-number">1.9.3.</span> <span class="nav-text">C. 메소드 축약 표현</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
