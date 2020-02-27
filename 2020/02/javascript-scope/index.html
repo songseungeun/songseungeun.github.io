@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="1. 타입 변환과 단축 평가1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.  2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.   명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.  A.">
+  <meta name="description" content="1. 스코프1. 스코프란? Scope, 유효범위. 모든 식별자 (변수 이름, 함수 이름, 클래스 이름 등) 는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효범위가 결정된다. 식별자가 유효한 범위. 자바스크립트 엔진은 스코프를 통해 어떤 변수를 참조해야 할 것인지 결정 &gt; 자바스크립트 엔진이 식별자를 검색할 때 사용하는 규칙">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript - type casting">
-<meta property="og:url" content="https://songseungeun.github.io/2020/02/javascript-type-casting/index.html">
+<meta property="og:title" content="javascript - scope">
+<meta property="og:url" content="https://songseungeun.github.io/2020/02/javascript-scope/index.html">
 <meta property="og:site_name" content="mare nubium">
-<meta property="og:description" content="1. 타입 변환과 단축 평가1. 타입 변환 명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.  2. 암묵적 타입 변환 개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.   명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(&#x3D;변경 불가능 한 값)을 직접 변경하는 것은 아니고,다른 타입의 원시값을 새로 생성함.  A.">
+<meta property="og:description" content="1. 스코프1. 스코프란? Scope, 유효범위. 모든 식별자 (변수 이름, 함수 이름, 클래스 이름 등) 는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효범위가 결정된다. 식별자가 유효한 범위. 자바스크립트 엔진은 스코프를 통해 어떤 변수를 참조해야 할 것인지 결정 &gt; 자바스크립트 엔진이 식별자를 검색할 때 사용하는 규칙">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-02-24T10:39:14.000Z">
-<meta property="article:modified_time" content="2020-02-24T12:07:15.572Z">
+<meta property="article:published_time" content="2020-02-26T08:15:58.000Z">
+<meta property="article:modified_time" content="2020-02-27T00:42:39.795Z">
 <meta property="article:author" content="mare nubium">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="blog">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="front-end">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
+<link rel="canonical" href="https://songseungeun.github.io/2020/02/javascript-scope/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>javascript - type casting | mare nubium</title>
+  <title>javascript - scope | mare nubium</title>
   
 
 
@@ -148,7 +148,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
-    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/javascript-type-casting/">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/02/javascript-scope/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -161,7 +161,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          javascript - type casting
+          javascript - scope
         </h1>
 
         <div class="post-meta">
@@ -170,10 +170,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-02-24 19:39:14 / Modified: 21:07:15" itemprop="dateCreated datePublished" datetime="2020-02-24T19:39:14+09:00">2020-02-24</time>
+              <time title="Created: 2020-02-26 17:15:58" itemprop="dateCreated datePublished" datetime="2020-02-26T17:15:58+09:00">2020-02-26</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-02-27 09:42:39" itemprop="dateModified" datetime="2020-02-27T09:42:39+09:00">2020-02-27</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -203,70 +209,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="1-타입-변환과-단축-평가"><a href="#1-타입-변환과-단축-평가" class="headerlink" title="1. 타입 변환과 단축 평가"></a>1. 타입 변환과 단축 평가</h1><h2 id="1-타입-변환"><a href="#1-타입-변환" class="headerlink" title="1. 타입 변환"></a>1. 타입 변환</h2><ul>
-<li>명시적 타입 변환, 타입 캐스팅 : 개발자의 의도로 값의 타입을 변환하는 것.</li>
-</ul>
-<h2 id="2-암묵적-타입-변환"><a href="#2-암묵적-타입-변환" class="headerlink" title="2. 암묵적 타입 변환"></a>2. 암묵적 타입 변환</h2><ul>
-<li>개발자의 의도와 관계없이 데이터 타입이 강제 변환 되는 것.</li>
-</ul>
-<ul>
-<li>명시적 타입 변환이나 암묵적 타입 변환이 기존 원시값(=변경 불가능 한 값)을 직접 변경하는 것은 아니고,<br>다른 타입의 원시값을 새로 생성함.</li>
-</ul>
-<h3 id="A-문자열-타입으로-변환"><a href="#A-문자열-타입으로-변환" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
-<li>+연산자의 피연산자 중 하나 이상이 문자열이면 문자열 연결 연산자로 동작. 문자열이 아닌 피연산자를 문자열로 암묵적 타입 변환.</li>
-<li>피연산자 + ‘’ &gt; 문자열로 타입변환.</li>
-<li>symbol 타입의 경우만 TypeError.</li>
-</ul>
-<h3 id="B-숫자-타입으로-변환"><a href="#B-숫자-타입으로-변환" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
-<li>산술연산자의 피연산자 중에서 숫자타입이 아닌 피연산자를 숫자타입으로 암묵적 타입 변환.</li>
-<li>숫자타입으로 변환이 안 될 경우에는 NaN 반환.</li>
-<li>비교연산자는 숫자 타입으로 암묵적 타입 변환 후 불리언 값으로 반환.</li>
-<li>+’string’, +undefined, +{}, +[10, 20], +(function(){}) &gt; NaN</li>
-<li>+Symbol() &gt; TypeError.</li>
-</ul>
-<h3 id="C-불리언-타입으로-변환"><a href="#C-불리언-타입으로-변환" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
-<li>조건식의 평가 결과를 불리언 타입으로 암묵적 타입 변환.</li>
-<li>불리언 타입이 아닌 값을 truthy 값(true), falsy 값(false)으로 구분하고 타입 변환.</li>
+        <h1 id="1-스코프"><a href="#1-스코프" class="headerlink" title="1. 스코프"></a>1. 스코프</h1><h2 id="1-스코프란"><a href="#1-스코프란" class="headerlink" title="1. 스코프란?"></a>1. 스코프란?</h2><ul>
+<li>Scope, 유효범위.</li>
+<li>모든 식별자 (변수 이름, 함수 이름, 클래스 이름 등) 는 자신이 선언된 위치에 의해 다른 코드가 식별자 자신을 참조할 수 있는 유효범위가 결정된다.</li>
+<li>식별자가 유효한 범위.</li>
+<li>자바스크립트 엔진은 스코프를 통해 어떤 변수를 참조해야 할 것인지 결정 &gt; 자바스크립트 엔진이 식별자를 검색할 때 사용하는 규칙.</li>
+<li>컴퓨터의 디렉토리같은 개념.</li>
 </ul>
 <ul>
-<li>false로 평가되는 falsy 값.<br>: false, undefined, null, 0, -0, NaN, ‘’(빈문자열)<br>이 외는 모두 true로 평가되는 truthy 값.</li>
+<li>var 키워드로 선언된 변수는 같은 스코프 내에서 중복 선언이 허용되고, 변수값이 재할당되어 변경되는 부작용을 발생시킴.</li>
 </ul>
-<h2 id="3-명시적-타입-변환"><a href="#3-명시적-타입-변환" class="headerlink" title="3. 명시적 타입 변환"></a>3. 명시적 타입 변환</h2><h3 id="A-문자열-타입으로-변환-1"><a href="#A-문자열-타입으로-변환-1" class="headerlink" title="A. 문자열 타입으로 변환"></a>A. 문자열 타입으로 변환</h3><ul>
-<li>string 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
-<li>Object.prototype.toString 메소드를 사용.</li>
-<li>문자열 연결 연산자를 이용.<br>(암묵적 타입 변환 방법을 이용해서 개발자의 의도로 사용.)</li>
+<h2 id="2-스코프의-종류"><a href="#2-스코프의-종류" class="headerlink" title="2. 스코프의 종류"></a>2. 스코프의 종류</h2><ul>
+<li><p>전역 global : 코드의 가장 바깥 영역 / 전역 스코프 / 전역 변수</p>
+</li>
+<li><p>지역 local : 함수 몸체 내부 / 지역 스코프 / 지역 변수</p>
+<h3 id="2-1-전역과-전역-스코프"><a href="#2-1-전역과-전역-스코프" class="headerlink" title="2-1. 전역과 전역 스코프"></a>2-1. 전역과 전역 스코프</h3><ul>
+<li>전역 변수는 어디서든지 참조할 수 있다. = 함수 내부에서도 참조할 수 있다.</li>
 </ul>
-<h3 id="B-숫자-타입으로-변환-1"><a href="#B-숫자-타입으로-변환-1" class="headerlink" title="B. 숫자 타입으로 변환"></a>B. 숫자 타입으로 변환</h3><ul>
-<li>Number 생성자 함수를 new 연산자 없이 호출하는 방법.</li>
-<li>parseInt, parseFloat 함수를 사용하는 방법.<br>(문자열만 변환가능, ‘숫자’가 들어있는 문자열만 해당.)</li>
-<li>+단항 산술 연산자를 이용하는 방법.</li>
-<li>*산술 연산자를 이용하는 방법.</li>
+<h3 id="2-2-지역과-지역-스코프"><a href="#2-2-지역과-지역-스코프" class="headerlink" title="2-2. 지역과 지역 스코프"></a>2-2. 지역과 지역 스코프</h3><ul>
+<li>지역 변수는 자신이 선언된 지역과 하위 지역(중첩)에서만 참조할 수 있다.</li>
+<li>전역변수와 지역변수의 이름이 같을 때, 지역에서 그 변수를 참조하면 지역 내부에서 선언된 변수를 참조한다.</li>
 </ul>
-<h3 id="C-불리언-타입으로-변환-1"><a href="#C-불리언-타입으로-변환-1" class="headerlink" title="C. 불리언 타입으로 변환"></a>C. 불리언 타입으로 변환</h3><ul>
-<li>Boolean 생성자 함수를 new 연산자 없이 호출하는 방법</li>
-<li>!부정 논리 연산자를 두 번 사용하는 방법</li>
+</li>
 </ul>
-<h2 id="4-단축평가"><a href="#4-단축평가" class="headerlink" title="4. 단축평가"></a>4. 단축평가</h2><ul>
-<li>&amp;&amp;, || 는 논리연산의 결과를 타입 변환하지 않고, 피연산자를 그대로 반환한다.</li>
+<h2 id="3-스코프-체인"><a href="#3-스코프-체인" class="headerlink" title="3. 스코프 체인"></a>3. 스코프 체인</h2><ul>
+<li><p>중첩 함수 : 함수 몸체 내부에서 정의한 함수</p>
+</li>
+<li><p>외부 함수 : 중첩 함수를 포함하는 함수</p>
+</li>
+<li><p>스코프는 함수의 중첩에 의해 계층적 구조를 갖는다.</p>
+</li>
+<li><p>모든 지역 스코프의 최상위 스코프는 전역 스코프.</p>
+</li>
+<li><p>스코프 체인 : 최상위 스코프 (전역 스코프) &gt; outer 지역 스코프 &gt; inner 지역 스코프</p>
+</li>
+<li><p>상위 스코프에서 선언한 변수를 하위 스코프에서도 참조할 수 있다.</p>
+<h3 id="3-1-스코프-체인에-의한-변수-검색"><a href="#3-1-스코프-체인에-의한-변수-검색" class="headerlink" title="3-1. 스코프 체인에 의한 변수 검색"></a>3-1. 스코프 체인에 의한 변수 검색</h3><ul>
+<li>상위 스코프에서 유효한 변수는 하위 스코프에서 자유롭게 참조할 수 있지만 하위 스코프에서 유효한 변수를 상위 스코프에서 참조할 수 없다.</li>
 </ul>
-<h3 id="amp-amp-AND"><a href="#amp-amp-AND" class="headerlink" title="&amp;&amp; AND"></a>&amp;&amp; AND</h3><ul>
-<li>두 개의 피연산자가 모두 true 일 때 true.</li>
-<li>왼쪽 &gt; 오른쪽 평가 진행. </li>
-<li>‘Cat’ &amp;&amp; ‘Dog’ 경우 ‘’(빈 문자열) 외에 문자열은 truthy 값이고, ‘Cat’ 평가 후 ‘Dog’까지 평가해 truthy 이므로 마지막에 평가한 ‘Dog’를 반환함.</li>
+<h3 id="3-2-스코프-체인에-의한-함수-검색"><a href="#3-2-스코프-체인에-의한-함수-검색" class="headerlink" title="3-2. 스코프 체인에 의한 함수 검색"></a>3-2. 스코프 체인에 의한 함수 검색</h3><ul>
+<li>함수 이름과 동일한 이름의 변수를 암묵적으로 선언하고 생성된 함수 객체를 할당한다.</li>
+<li>스코프 &gt; 식별자를 검색하는 규칙</li>
 </ul>
-<h3 id="OR"><a href="#OR" class="headerlink" title="|| OR"></a>|| OR</h3><ul>
-<li><p>두 개의 피연산자 중 하나만 true 여도 true.</p>
 </li>
-<li><p>왼쪽 &gt; 오른쪽 평가 진행.</p>
-</li>
-<li><p>‘Cat’ || ‘Dog’ 경우 ‘Cat’ 만 평가해도 이미 true 이므로 바로 ‘Cat’ 을 반환.</p>
-</li>
-<li><p>단축평가를 사용하면 if문 대체 가능.</p>
-</li>
-<li><p>주어진 조건이 truthy 값 일 때 &amp;&amp;</p>
-</li>
-<li><p>주어진 조건이 false 값 일 때 ||</p>
-</li>
+</ul>
+<h2 id="4-함수-레벨-스코프"><a href="#4-함수-레벨-스코프" class="headerlink" title="4. 함수 레벨 스코프"></a>4. 함수 레벨 스코프</h2><ul>
+<li>코드 블록이 아닌 함수에 의해서만 지역 스코프가 생성된다.</li>
+<li>함수 레벨 스코프 : 함수의 코드 블록만을 지역스코프로 인정함.</li>
+</ul>
+<h2 id="5-렉시컬-스코프"><a href="#5-렉시컬-스코프" class="headerlink" title="5. 렉시컬 스코프"></a>5. 렉시컬 스코프</h2><ul>
+<li>자바스크립트는 함수를 어디서 호출했는지가 아니라 함수를 어디서 정의했는지에 따라 상위 스코프를 결정한다.</li>
 </ul>
 
     </div>
@@ -289,13 +281,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/review-js-expression-datatype/" rel="prev" title="review - 'js/expression & datatype'">
-      <i class="fa fa-chevron-left"></i> review - 'js/expression & datatype'
+    <a href="/2020/02/javascript-function/" rel="prev" title="javascript - function">
+      <i class="fa fa-chevron-left"></i> javascript - function
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/javascript-object/" rel="next" title="javascript-object">
-      javascript-object <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -355,7 +344,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-타입-변환과-단축-평가"><span class="nav-number">1.</span> <span class="nav-text">1. 타입 변환과 단축 평가</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-타입-변환"><span class="nav-number">1.1.</span> <span class="nav-text">1. 타입 변환</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-암묵적-타입-변환"><span class="nav-number">1.2.</span> <span class="nav-text">2. 암묵적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환"><span class="nav-number">1.2.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환"><span class="nav-number">1.2.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환"><span class="nav-number">1.2.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-명시적-타입-변환"><span class="nav-number">1.3.</span> <span class="nav-text">3. 명시적 타입 변환</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A-문자열-타입으로-변환-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">A. 문자열 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B-숫자-타입으로-변환-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">B. 숫자 타입으로 변환</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C-불리언-타입으로-변환-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">C. 불리언 타입으로 변환</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-단축평가"><span class="nav-number">1.4.</span> <span class="nav-text">4. 단축평가</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#amp-amp-AND"><span class="nav-number">1.4.1.</span> <span class="nav-text">&amp;&amp; AND</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OR"><span class="nav-number">1.4.2.</span> <span class="nav-text">|| OR</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-스코프"><span class="nav-number">1.</span> <span class="nav-text">1. 스코프</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-스코프란"><span class="nav-number">1.1.</span> <span class="nav-text">1. 스코프란?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-스코프의-종류"><span class="nav-number">1.2.</span> <span class="nav-text">2. 스코프의 종류</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-전역과-전역-스코프"><span class="nav-number">1.2.1.</span> <span class="nav-text">2-1. 전역과 전역 스코프</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-지역과-지역-스코프"><span class="nav-number">1.2.2.</span> <span class="nav-text">2-2. 지역과 지역 스코프</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-스코프-체인"><span class="nav-number">1.3.</span> <span class="nav-text">3. 스코프 체인</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-스코프-체인에-의한-변수-검색"><span class="nav-number">1.3.1.</span> <span class="nav-text">3-1. 스코프 체인에 의한 변수 검색</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-스코프-체인에-의한-함수-검색"><span class="nav-number">1.3.2.</span> <span class="nav-text">3-2. 스코프 체인에 의한 함수 검색</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-함수-레벨-스코프"><span class="nav-number">1.4.</span> <span class="nav-text">4. 함수 레벨 스코프</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-렉시컬-스코프"><span class="nav-number">1.5.</span> <span class="nav-text">5. 렉시컬 스코프</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
