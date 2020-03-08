@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1. let, const 와 블록 레벨 스코프1. var 키워드로 선언한 변수의 문제점1-1. 변수 중복 선언 허용 var 키워드로 선언한 변수는 중복 선언 가능. 에러는 발생하지 않고, 아래 변수 선언은 var 가 없는 것처럼 동작해 재할당되어 변수 값이 변경된다.  1-2. 함수 레벨 스코프 var 키워드로 선언한 변수는 오로지 함수 블록만을 지역 스코">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-block-level-scope">
+<meta property="og:url" content="https://songseungeun.github.io/2020/03/javascript-block-level-scope/index.html">
+<meta property="og:site_name" content="mare nubium">
+<meta property="og:description" content="1. let, const 와 블록 레벨 스코프1. var 키워드로 선언한 변수의 문제점1-1. 변수 중복 선언 허용 var 키워드로 선언한 변수는 중복 선언 가능. 에러는 발생하지 않고, 아래 변수 선언은 var 가 없는 것처럼 동작해 재할당되어 변수 값이 변경된다.  1-2. 함수 레벨 스코프 var 키워드로 선언한 변수는 오로지 함수 블록만을 지역 스코">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-01T15:03:55.000Z">
+<meta property="article:modified_time" content="2020-03-02T04:33:48.311Z">
+<meta property="article:author" content="mare nubium">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://songseungeun.github.io/2020/03/javascript-block-level-scope/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>javascript-block-level-scope | mare nubium</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mare nubium</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">구름의 바다 front-end web development</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/03/javascript-block-level-scope/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mare nubium">
+      <meta itemprop="description" content="Front-end web development를 공부합니다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mare nubium">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javascript-block-level-scope
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-02 00:03:55 / Modified: 13:33:48" itemprop="dateCreated datePublished" datetime="2020-03-02T00:03:55+09:00">2020-03-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/" itemprop="url" rel="index">
+                    <span itemprop="name">Learn web development</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="1-let-const-와-블록-레벨-스코프"><a href="#1-let-const-와-블록-레벨-스코프" class="headerlink" title="1. let, const 와 블록 레벨 스코프"></a>1. let, const 와 블록 레벨 스코프</h1><h2 id="1-var-키워드로-선언한-변수의-문제점"><a href="#1-var-키워드로-선언한-변수의-문제점" class="headerlink" title="1. var 키워드로 선언한 변수의 문제점"></a>1. var 키워드로 선언한 변수의 문제점</h2><h3 id="1-1-변수-중복-선언-허용"><a href="#1-1-변수-중복-선언-허용" class="headerlink" title="1-1. 변수 중복 선언 허용"></a>1-1. 변수 중복 선언 허용</h3><ul>
+<li>var 키워드로 선언한 변수는 중복 선언 가능.</li>
+<li>에러는 발생하지 않고, 아래 변수 선언은 var 가 없는 것처럼 동작해 재할당되어 변수 값이 변경된다.</li>
+</ul>
+<h3 id="1-2-함수-레벨-스코프"><a href="#1-2-함수-레벨-스코프" class="headerlink" title="1-2. 함수 레벨 스코프"></a>1-2. 함수 레벨 스코프</h3><ul>
+<li>var 키워드로 선언한 변수는 오로지 함수 블록만을 지역 스코프로 인정.</li>
+<li>함수 외부에서 var 키워드로 선언한 변수는 코드 블록내에서 선언하여도 모두 전역 변수가 된다.</li>
+<li>전역 변수를 남발할 가능성을 높이고, 전역 변수가 중복 선언 되는 경우가 발생한다.</li>
+</ul>
+<h3 id="1-3-변수-호이스팅"><a href="#1-3-변수-호이스팅" class="headerlink" title="1-3. 변수 호이스팅"></a>1-3. 변수 호이스팅</h3><ul>
+<li>var 키워드로 변수를 선언하면 변수 호이스팅에 의해 변수 선언문이 스코프의 선두로 끌어 올려진 것처럼 동작한다.</li>
+<li>변수 선언문 이전에 참조하면 에러를 발생시키진 않으나 흐름에도 맞지 않고, 가독성을 떨어뜨리고 오류를 발생시킬 여지를 남긴다.</li>
+</ul>
+<h2 id="2-let-키워드"><a href="#2-let-키워드" class="headerlink" title="2. let 키워드"></a>2. let 키워드</h2><h3 id="2-1-변수-중복-선언-금지"><a href="#2-1-변수-중복-선언-금지" class="headerlink" title="2-1. 변수 중복 선언 금지"></a>2-1. 변수 중복 선언 금지</h3><ul>
+<li>let 키워드로 동일한 이름을 갖는 변수를 중복 선언하면 SyntaxError 가 발생한다.<h3 id="2-2-블록-레벨-스코프"><a href="#2-2-블록-레벨-스코프" class="headerlink" title="2-2. 블록 레벨 스코프"></a>2-2. 블록 레벨 스코프</h3></li>
+<li>let 키워드로 선언한 변수는 모든 코드 블록 (함수, if문, for문, while문, try/catch 문 등)을 지역 스코프로 인정하는 블록 레벨 스코프를 따른다.<h3 id="2-3-변수-호이스팅"><a href="#2-3-변수-호이스팅" class="headerlink" title="2-3. 변수 호이스팅"></a>2-3. 변수 호이스팅</h3></li>
+<li>let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것 처럼 동작한다. </li>
+<li>변수 선언문 전에 참조 &gt; Reference Error</li>
+<li>변수 선언문에서 초기화 &gt; undefined</li>
+<li>변수 할당문에서 할당 &gt; 할당값</li>
+<li>일시적 사각지대 (Temporal Dead Zone; TDZ)<br>: 스코프의 시작지점부터 초기화 시작지점까지의 구간. 변수를 참조할 수 없다.</li>
+<li>let 키워드로 선언한 변수는 변수 호이스팅이 발생하지 않는 것처럼 보이지만 발생한다. (let, const, class 모두)<h3 id="2-4-전역-객체와-let"><a href="#2-4-전역-객체와-let" class="headerlink" title="2-4. 전역 객체와 let"></a>2-4. 전역 객체와 let</h3></li>
+<li>전역객체 : 코드가 실행되기 이전 단계에 자바스크립트 엔진에 의해 어떤 객체보다도 먼저 생성되는 특수한 객체이며 어떤 객체에도 속하지 않은 최상위 객체이다. 클라이언트 사이드 환경(브라우저):window, 서버사이드 환경(Node.js):global.</li>
+<li>var 키워드로 선언한 전역 변수는 전역 객체의 프로퍼티이다.</li>
+<li>전역 객체의 프로퍼티는 전역 변수처럼 사용할 수 있다.</li>
+<li>암묵적 전역은 전역 객체의 프로퍼티이다.</li>
+<li>함수 선언문으로 정의한 전역 함수는 전역 객체의 프로퍼티이다.</li>
+<li>전역 객체의 프로퍼티는 전역 변수처럼 사용할 수 있다.</li>
+<li>let 키워드로 선언한 전역 변수는 전역 객체 window의 프로퍼티가 아니다. 보이지 않는 개념적인 블록내에 존재하게 된다.</li>
+</ul>
+<h2 id="3-const-키워드"><a href="#3-const-키워드" class="headerlink" title="3. const 키워드"></a>3. const 키워드</h2><ul>
+<li>상수를 선언하기 위해 사용한다.</li>
+<li>하지만 반드시 상수만을 위해 사용하지는 않는다.<h3 id="3-1-선언과-초기화"><a href="#3-1-선언과-초기화" class="headerlink" title="3-1. 선언과 초기화"></a>3-1. 선언과 초기화</h3></li>
+<li>const 키워드로 선언한 변수는 반드시 선언과 동시에 할당이 이루어져야 한다. 그렇지 않으면 SyntaxError.</li>
+<li>let 키워드로 선언한 변수와 마찬가지로 블록레벨 스코프를 가지며 변수 호이스팅이 발생하지 않는 것처럼 동작한다.<h3 id="3-2-재할당-금지"><a href="#3-2-재할당-금지" class="headerlink" title="3-2. 재할당 금지"></a>3-2. 재할당 금지</h3></li>
+<li>const 키워드로 선언한 변수는 재할당이 금지된다.</li>
+<li>TypeError.<h3 id="3-3-상수"><a href="#3-3-상수" class="headerlink" title="3-3. 상수"></a>3-3. 상수</h3></li>
+<li>원시값을 할당하면, 변수값을 변경할 수 없다.</li>
+<li>재할당이 금지된 변수. 재할당 금지.</li>
+<li>상수는 상태 유지와 가독성, 유지보수의 편의를 위해 적극적으로 사용해야 한다.</li>
+<li>일반적으로 상수의 이름은 대문자로 선언하여 상수임을 명확히 나타낸다.</li>
+<li>여러 단어로 이루어진 경우에는 언더스코어(_)로 구분하여 스네이크 케이스로 표현하는 것이 일반적이다.<h3 id="3-4-const-키워드와-객체"><a href="#3-4-const-키워드와-객체" class="headerlink" title="3-4. const 키워드와 객체"></a>3-4. const 키워드와 객체</h3></li>
+<li>객체를 할당한 경우, 값을 변경할 수 있다.</li>
+<li>const 키워드는 재할당을 금지할 뿐 불변을 의미하지는 않는다.</li>
+<li>새로운 값을 재할당 하는 것은 불가능하지만, 객체의 내용 (프로퍼티의 추가, 삭제, 프로퍼티 값의 변경)을 변경하는 것은 가능하다.</li>
+<li>객체의 내용이 변경되더라도 변수에 할당된 참조값은 변경되지 않는다.<h2 id="4-var-vs-let-vs-const"><a href="#4-var-vs-let-vs-const" class="headerlink" title="4. var vs. let vs. const"></a>4. var vs. let vs. const</h2></li>
+<li>변수 선언에는 기본적으로 const를 사용하고 let은 재할당이 필요한 경우에 한정해 사용하는 것이 좋다.</li>
+<li>원시 값의 경우, 가급적 상수를 사용하는 편이 좋다.</li>
+<li>객체를 재할당하는 경우는 흔하지 않으므로 const 키워드를 사용해 의도치 않는 재할당을 방지해주면 된다.<ul>
+<li>ES6 를 사용한다면 var 키워드는 사용하지 않는다.</li>
+<li>재할당이 필요한 경우에 한정해 let 키워드를 사용한다. 이때 변수의 스코프는 최대한 좁게 만든다.</li>
+<li>변경이 발생하지 않고 읽기전용으로 사용하는 (재할당이 필요 없는 상수) 원시 값과 객체에는 const 키워드를 사용한다. const 키워드는 재할당을 금지하므로 var, let 키워드보다 안전하다.</li>
+</ul>
+</li>
+<li>const 를 기본으로 사용하고, 재할당이 꼭 필요한 곳에만 let으로 변경한다.</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/front-end/" rel="tag"># front-end</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/javascript-global-variable/" rel="prev" title="javascript-global-variable">
+      <i class="fa fa-chevron-left"></i> javascript-global-variable
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/javascript-property-definition/" rel="next" title="javascript-property-definition">
+      javascript-property-definition <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-let-const-와-블록-레벨-스코프"><span class="nav-number">1.</span> <span class="nav-text">1. let, const 와 블록 레벨 스코프</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-var-키워드로-선언한-변수의-문제점"><span class="nav-number">1.1.</span> <span class="nav-text">1. var 키워드로 선언한 변수의 문제점</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-변수-중복-선언-허용"><span class="nav-number">1.1.1.</span> <span class="nav-text">1-1. 변수 중복 선언 허용</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-함수-레벨-스코프"><span class="nav-number">1.1.2.</span> <span class="nav-text">1-2. 함수 레벨 스코프</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-변수-호이스팅"><span class="nav-number">1.1.3.</span> <span class="nav-text">1-3. 변수 호이스팅</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-let-키워드"><span class="nav-number">1.2.</span> <span class="nav-text">2. let 키워드</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-변수-중복-선언-금지"><span class="nav-number">1.2.1.</span> <span class="nav-text">2-1. 변수 중복 선언 금지</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-블록-레벨-스코프"><span class="nav-number">1.2.2.</span> <span class="nav-text">2-2. 블록 레벨 스코프</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-변수-호이스팅"><span class="nav-number">1.2.3.</span> <span class="nav-text">2-3. 변수 호이스팅</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-전역-객체와-let"><span class="nav-number">1.2.4.</span> <span class="nav-text">2-4. 전역 객체와 let</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-const-키워드"><span class="nav-number">1.3.</span> <span class="nav-text">3. const 키워드</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-선언과-초기화"><span class="nav-number">1.3.1.</span> <span class="nav-text">3-1. 선언과 초기화</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-재할당-금지"><span class="nav-number">1.3.2.</span> <span class="nav-text">3-2. 재할당 금지</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-상수"><span class="nav-number">1.3.3.</span> <span class="nav-text">3-3. 상수</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-const-키워드와-객체"><span class="nav-number">1.3.4.</span> <span class="nav-text">3-4. const 키워드와 객체</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-var-vs-let-vs-const"><span class="nav-number">1.4.</span> <span class="nav-text">4. var vs. let vs. const</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mare nubium</p>
+  <div class="site-description" itemprop="description">Front-end web development를 공부합니다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mare nubium</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
