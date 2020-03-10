@@ -411,10 +411,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-04 21:06:51 / Modified: 21:07:04" itemprop="dateCreated datePublished" datetime="2020-03-04T21:06:51+09:00">2020-03-04</time>
+              <time title="Created: 2020-03-04 21:06:51" itemprop="dateCreated datePublished" datetime="2020-03-04T21:06:51+09:00">2020-03-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-10 10:51:15" itemprop="dateModified" datetime="2020-03-10T10:51:15+09:00">2020-03-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -450,7 +456,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h1 id="자바스크립트-복습-타입-변환과-단축-평가"><a href="#자바스크립트-복습-타입-변환과-단축-평가" class="headerlink" title="자바스크립트 복습 - 타입 변환과 단축 평가"></a>자바스크립트 복습 - 타입 변환과 단축 평가</h1><ol>
+<li><p>암묵적 타입 변환과 명시적 타입 변환<br>중요한 키워드 : 개발자의 의도<br>자바스크립트 엔진이 값을 평가하다가<br>예상하지 않았던 타입이 들어왔을 때 오류를 내지 않고 타입을 바꿔버리는 등의 동작을 일으키는 것이 암묵적 타입변환.<br>개발자가 프로그래밍을 할 때 타입변환이 필요한 부분에서 그 원리를 이용해서 의도적으로 타입변환을 할때 쓰는 것도  명시적 타입 변환이라고 한다<br>그 외에는 표준 빌트인 생성자 함수를 new 연산자 없이 호출하거나<br>빌트인 메소드를 이용하는 방법이 있다.<br>암묵적 타입변환과 명시적 타입변환을 어떤 방법으로 나누는 것은 적합하지 않고 경우에 따라서 그 원리를 사용하면 됨</p>
+</li>
+<li><p>단축평가 : 논리곱, 논리합<br>논리곱 &amp;&amp; AND 논리합 || OR 이 있는데<br>AND는 둘 다 true 여야 true 로 평가가 되고 하나라도 false 면 false 로 평가된다.<br>OR는 하나만 true 여도 true로 평가되고 둘 다 false 여야 false로 평가된다.<br>그래서 ‘Dog’ &amp;&amp; ‘Cat’ 의 예제에서<br>‘’ 빈 문자열 false 외에 모든 문자열은 true, truthy 값으로 평가되므로<br>Dog &amp;&amp; Cat 이면 &amp;&amp;는 첫번째가 true여도 두번째까지 확인해야 하므로 두번째 Cat을 확인하고 Cat을 반환하고<br>Dog || Cat 에서 ||는 첫번째만 true 여도 평가가 가능하므로 Dog를 확인 후 바로 Dog를 반환한다.</p>
+</li>
+<li><p>객체 - 객체 리터럴<br>프로퍼티키와 프로퍼티 값으로 이루어진 자료구조.<br>객체는 원시타입과 달리 변경 가능한 값.</p>
+</li>
+</ol>
+<p>객체리터럴은 객체를 생성하는 표기법<br>중괄호{} 내에 0개 이상의 프로퍼티를 정의.<br>변수에 할당이 이루어지는 시점에 객체리터럴을 해석하여 생성함.</p>
+<ol start="4">
+<li>값에 의한 전달, 참조에 의한 전달<br>값에 의한 전달은 원시타입을 원시값을 변수에 할당한 후 다른 변수로 그 변수를 참조한 뒤 원래 변수의 값을 재할당한 경우 메모리 공간에서 따로 관리를 하기때문에 그 값을 복사한 다른 변수가 영향을 받지 않는다는 것.</li>
+</ol>
+<p>참조에 의한 전달은 객체를 아까와 같은 방법으로 다른 변수가 참조했을 때 객체에 어떤 프로퍼티를 추가하거나 변경했을 때 객체의 변수는 참조값을 메모리에 저장하고 있으므로 복사한 변수도 같은 참조값을 저장하기 때문에 객체를 추가 변경했을때 복사한 변수가 변경된 값을 그대로 출력하는 등 영향을 받는다.</p>
+
       
     </div>
 
