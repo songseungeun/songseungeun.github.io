@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="생성자 함수에 의한 객체 생성1. Object 생성자 함수 new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.12345678910111213const brockhampton &#x3D; new Object();brockhampton.name &#x3D;">
+  <meta name="description" content="생성자 함수에 의한 객체 생성1. Object 생성자 함수 new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.  12345678910111213const brockhampton &#x3D; new Object();brockhampton.name &amp;#x3D">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript-constructor">
 <meta property="og:url" content="https://songseungeun.github.io/2020/03/javascript-constructor/index.html">
 <meta property="og:site_name" content="mare nubium">
-<meta property="og:description" content="생성자 함수에 의한 객체 생성1. Object 생성자 함수 new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.12345678910111213const brockhampton &#x3D; new Object();brockhampton.name &#x3D;">
+<meta property="og:description" content="생성자 함수에 의한 객체 생성1. Object 생성자 함수 new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다. 빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.  12345678910111213const brockhampton &#x3D; new Object();brockhampton.name &amp;#x3D">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-03T07:13:59.000Z">
-<meta property="article:modified_time" content="2020-03-03T13:37:08.467Z">
+<meta property="article:modified_time" content="2020-03-10T04:28:22.106Z">
 <meta property="article:author" content="mare nubium">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="blog">
@@ -170,10 +170,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-03 16:13:59 / Modified: 22:37:08" itemprop="dateCreated datePublished" datetime="2020-03-03T16:13:59+09:00">2020-03-03</time>
+              <time title="Created: 2020-03-03 16:13:59" itemprop="dateCreated datePublished" datetime="2020-03-03T16:13:59+09:00">2020-03-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-10 13:28:22" itemprop="dateModified" datetime="2020-03-10T13:28:22+09:00">2020-03-10</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -205,7 +211,11 @@
       
         <h1 id="생성자-함수에-의한-객체-생성"><a href="#생성자-함수에-의한-객체-생성" class="headerlink" title="생성자 함수에 의한 객체 생성"></a>생성자 함수에 의한 객체 생성</h1><h2 id="1-Object-생성자-함수"><a href="#1-Object-생성자-함수" class="headerlink" title="1. Object 생성자 함수"></a>1. Object 생성자 함수</h2><ul>
 <li>new 연산자와 함께 Object 생성자 함수를 호출하면 빈 객체를 생성하여 반환한다.</li>
-<li>빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const brockhampton &#x3D; new Object();</span><br><span class="line"></span><br><span class="line">brockhampton.name &#x3D; &#39;브록햄튼&#39;;</span><br><span class="line">brockhampton.music &#x3D; &#39;SUGAR&#39;;</span><br><span class="line">brockhampton.likedSong &#x3D; function () &#123;</span><br><span class="line">  console.log(&#39;요즘은 &#39; + this.name + &#39;의 &#39; + this.music + &#39;가 제일 좋아&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(brockhampton);</span><br><span class="line">brockhampton.likedSong();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; &#123; name: &#39;브록햄튼&#39;, music: &#39;SUGAR&#39;, likedSong: [Function (anonymous)] &#125;</span><br><span class="line">&#x2F;&#x2F; 요즘은 브록햄튼의 SUGAR가 제일 좋아</span><br></pre></td></tr></table></figure></li>
+<li>빈 객체에 프로퍼티 또는 메소드를 추가하여 객체를 완성할 수 있다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const brockhampton &#x3D; new Object();</span><br><span class="line"></span><br><span class="line">brockhampton.name &#x3D; &#39;브록햄튼&#39;;</span><br><span class="line">brockhampton.music &#x3D; &#39;SUGAR&#39;;</span><br><span class="line">brockhampton.likedSong &#x3D; function () &#123;</span><br><span class="line">  console.log(&#39;요즘은 &#39; + this.name + &#39;의 &#39; + this.music + &#39;가 제일 좋아&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(brockhampton);</span><br><span class="line">brockhampton.likedSong();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; &#123; name: &#39;브록햄튼&#39;, music: &#39;SUGAR&#39;, likedSong: [Function (anonymous)] &#125;</span><br><span class="line">&#x2F;&#x2F; 요즘은 브록햄튼의 SUGAR가 제일 좋아</span><br></pre></td></tr></table></figure>
+
+<ul>
 <li>생성자 함수란 new 연산자와 함께 호출하여 객체(인스턴스)를 생성하는 함수</li>
 <li>String, Number, Boolean, Function, Array, Date, RegExp 등의 빌트인 생성자 함수를 제공한다.</li>
 <li>객체를 생성하는 방법은 객체 리터럴을 사용하는 것이 더 간편하다.</li>
@@ -506,7 +516,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
