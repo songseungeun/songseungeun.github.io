@@ -28,7 +28,7 @@
 <meta property="og:description" content="this1. this 키워드 메소드는 자신이 속한 객체의 프로퍼티를 참조하고 변경하려면 자신이 속한 객체를 가리키는 식별자를 참조할 수 있어야 한다. 객체 리터럴 방식으로 생성한 객체의 경우, 메소드 내부에서 메소드 자신이 속한 객체를 가리키는 식별자를 재귀적으로 참조할 수 있다.  123456789101112const circle &#x3D; &amp;#123;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-15T11:06:16.000Z">
-<meta property="article:modified_time" content="2020-03-15T12:30:16.184Z">
+<meta property="article:modified_time" content="2020-03-16T09:01:48.353Z">
 <meta property="article:author" content="mare nubium">
 <meta property="article:tag" content="javascript">
 <meta property="article:tag" content="blog">
@@ -170,10 +170,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2020-03-15 20:06:16 / Modified: 21:30:16" itemprop="dateCreated datePublished" datetime="2020-03-15T20:06:16+09:00">2020-03-15</time>
+              <time title="Created: 2020-03-15 20:06:16" itemprop="dateCreated datePublished" datetime="2020-03-15T20:06:16+09:00">2020-03-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2020-03-16 18:01:48" itemprop="dateModified" datetime="2020-03-16T18:01:48+09:00">2020-03-16</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -241,6 +247,30 @@
 <blockquote>
 <p>렉시컬 스코프와 this 바인딩은 결정시기가 다르다.<br>함수의 상위 스코프를 결정하는 방식인 렉시컬 스코프는 함수 정의가 평가되어<br>함수 객체가 생성되는 시점에 상위 스코프를 결정한다.<br>this에 바인딩 될 객체는 함수 호출 시점에 결정된다.</p>
 </blockquote>
+<ul>
+<li><p>bind 내의 this와 this.value의 this가 다르다.</p>
+</li>
+<li><p>함수 몸체 내부 외부 차이</p>
+</li>
+<li><p>slice 메소드가 프로토타입 내부의 메소드라 함수내부에 this가 있다</p>
+</li>
+<li><p>arguments 가 this로 slice를 쓴다 &gt; 간접호출</p>
+</li>
+<li><p>유사배열객체 &gt; 배열 로 바꾸는 방법 Array.prototype.slice.apply(arguments);</p>
+</li>
+<li><p>ES6 […arguments] …&lt;- 디스트럭처링 비구조화</p>
+</li>
+<li><p>apply, call</p>
+</li>
+<li><p>함수를 호출하는 것이 주 목적 .앞의 함수를 호출</p>
+</li>
+<li><p>그 때 .앞의 this를 교체해준다. </p>
+</li>
+<li><p>bind</p>
+</li>
+<li><p>호출 X. this만 교체한다.</p>
+</li>
+</ul>
 
     </div>
 
