@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"songseungeun.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="배열배열 생성1. Array.of 전달된 인수를 요소로 갖는 새 Array 인스턴스를 생성.  12345Array.of(7); &#x2F;&#x2F; [7]Array.of(1, 2, 3); &#x2F;&#x2F; [1, 2, 3]Array(7); &#x2F;&#x2F; [ , , , , , , ]Array(1, 2, 3); &#x2F;&#x2F; [1, 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript-array">
+<meta property="og:url" content="https://songseungeun.github.io/2020/03/javascript-array/index.html">
+<meta property="og:site_name" content="mare nubium">
+<meta property="og:description" content="배열배열 생성1. Array.of 전달된 인수를 요소로 갖는 새 Array 인스턴스를 생성.  12345Array.of(7); &#x2F;&#x2F; [7]Array.of(1, 2, 3); &#x2F;&#x2F; [1, 2, 3]Array(7); &#x2F;&#x2F; [ , , , , , , ]Array(1, 2, 3); &#x2F;&#x2F; [1, 2">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-24T04:46:17.000Z">
+<meta property="article:modified_time" content="2020-03-24T08:44:39.624Z">
+<meta property="article:author" content="mare nubium">
+<meta property="article:tag" content="javascript">
+<meta property="article:tag" content="blog">
+<meta property="article:tag" content="js">
+<meta property="article:tag" content="front-end">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://songseungeun.github.io/2020/03/javascript-array/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>javascript-array | mare nubium</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mare nubium</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">구름의 바다 front-end web development</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://songseungeun.github.io/2020/03/javascript-array/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mare nubium">
+      <meta itemprop="description" content="Front-end web development를 공부합니다.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mare nubium">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          javascript-array
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2020-03-24 13:46:17 / Modified: 17:44:39" itemprop="dateCreated datePublished" datetime="2020-03-24T13:46:17+09:00">2020-03-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/" itemprop="url" rel="index">
+                    <span itemprop="name">Learn web development</span>
+                  </a>
+                </span>
+                  , 
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learn-web-development/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="배열"><a href="#배열" class="headerlink" title="배열"></a>배열</h1><h2 id="배열-생성"><a href="#배열-생성" class="headerlink" title="배열 생성"></a>배열 생성</h2><h3 id="1-Array-of"><a href="#1-Array-of" class="headerlink" title="1. Array.of"></a>1. Array.of</h3><ul>
+<li>전달된 인수를 요소로 갖는 새 Array 인스턴스를 생성.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Array.of(7); &#x2F;&#x2F; [7]</span><br><span class="line">Array.of(1, 2, 3); &#x2F;&#x2F; [1, 2, 3]</span><br><span class="line"></span><br><span class="line">Array(7); &#x2F;&#x2F; [ , , , , , , ]</span><br><span class="line">Array(1, 2, 3); &#x2F;&#x2F; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-Array-from"><a href="#2-Array-from" class="headerlink" title="2. Array.from"></a>2. Array.from</h3><ul>
+<li>유사 배열 객체 또는 이터러블 객체를 변환하여 새로운 배열을 생성.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.from</span><br><span class="line">&#x2F;&#x2F; 유사배열객체나 반복가능한객체(이터러블)을 얕게 복사해 새로운 배열객체를 만든다.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Array.from (arrayLike, mapFn, thisArg)</span><br><span class="line">&#x2F;&#x2F; Array.from (유사배열객체나 이터러블, 배열의 모든 요소에 대해 호출할 맵핑 함수, mapFn실행시에 this로 사용할 값)</span><br><span class="line">&#x2F;&#x2F; 새로운 Array 인스턴스를 반환한다. </span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Array.from(obj).map(mapFn, thisArg) 와 같다. (ex-array-map.js 참고)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; string에서 배열 만들기</span><br><span class="line">const stringArr &#x3D; Array.from(&#39;foo&#39;);</span><br><span class="line">console.log(stringArr);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Map에서 배열 만들기</span><br><span class="line">const m &#x3D; new Map([[1, 2], [2, 4], [4, 8]]);</span><br><span class="line">console.log(m);</span><br><span class="line"></span><br><span class="line">const n &#x3D; Array.from(m);</span><br><span class="line">console.log(n);</span><br><span class="line"></span><br><span class="line">let myMap &#x3D; new Map([</span><br><span class="line">  [1, &#39;one&#39;],</span><br><span class="line">  [2, &#39;two&#39;],</span><br><span class="line">  [3, &#39;three&#39;],</span><br><span class="line">]);</span><br><span class="line">console.log(myMap);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 배열 형태를 가진 객체에서 배열 만들기</span><br><span class="line">function f() &#123;</span><br><span class="line">  return Array.from(arguments);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(f(1, 2, 3));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 시퀀스 생성기 range</span><br><span class="line"></span><br><span class="line">const range &#x3D; (start, stop, step) &#x3D;&gt; </span><br><span class="line">Array.from(&#123; length: (stop - start) &#x2F; step + 1&#125;, (_, i) &#x3D;&gt; start + (i * step));</span><br><span class="line"></span><br><span class="line">console.log(range(0, 10, 1));</span><br><span class="line">console.log(range(1, 10, 2));</span><br></pre></td></tr></table></figure>
+
+<h2 id="배열-메소드"><a href="#배열-메소드" class="headerlink" title="배열 메소드"></a>배열 메소드</h2><h3 id="1-Array-isArray"><a href="#1-Array-isArray" class="headerlink" title="1. Array.isArray"></a>1. Array.isArray</h3><ul>
+<li>Array 생성자 함수의 정적 메소드.</li>
+<li>주어진 인수가 배열이면 true, 아니면 false</li>
+</ul>
+<h3 id="2-Array-prototype-indexOf"><a href="#2-Array-prototype-indexOf" class="headerlink" title="2. Array.prototype.indexOf"></a>2. Array.prototype.indexOf</h3><ul>
+<li>원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환.</li>
+<li>해당하는 요소가 없을 경우 -1 반환.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.indexOf</span><br><span class="line">&#x2F;&#x2F; 원본 배열에서 인수로 전달된 요소를 검색하여 인덱스를 반환</span><br><span class="line"></span><br><span class="line">const arrIndexOf &#x3D; [1, 2, 2, 3];</span><br><span class="line"></span><br><span class="line">console.log(arrIndexOf.indexOf(2)); &#x2F;&#x2F; 1</span><br><span class="line">console.log(arrIndexOf.indexOf(4)); &#x2F;&#x2F; -1</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 두번째 인수는 검색을 시작할 인덱스</span><br><span class="line">console.log(arrIndexOf.indexOf(2, 2)); &#x2F;&#x2F; 2</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 배열에 요소가 존재하는지 확인</span><br><span class="line">const foods &#x3D; [&#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39;];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; foods 배열에 &#39;orange&#39; 요소가 존재하는지 확인</span><br><span class="line">if (foods.indexOf(&#39;orange&#39;) &#x3D;&#x3D;&#x3D; -1) &#123;</span><br><span class="line">  &#x2F;&#x2F; foods 배열에 &#39;orange&#39; 요소가 존재하지 않으면 추가</span><br><span class="line">  foods.push(&#39;orange&#39;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(foods); &#x2F;&#x2F; [ &#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39; ]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>그냥 한번 함수로 만들어 봄</li>
+<li>파인애플이 있는지 확인하고 없으면 추가해서 리턴<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">const foods &#x3D; [&#39;apple&#39;, &#39;banana&#39;, &#39;orange&#39;];</span><br><span class="line">const foods2 &#x3D; [&#39;pizza&#39;, &#39;cola&#39;, &#39;fineapple&#39;];</span><br><span class="line"></span><br><span class="line">function fruitsAdd(fruits) &#123;</span><br><span class="line">  if (fruits.indexOf(&#39;fineapple&#39;) &#x3D;&#x3D;&#x3D; -1) &#123;</span><br><span class="line">    fruits.push(&#39;fineapple&#39;);</span><br><span class="line">    return console.log(fruits);</span><br><span class="line">  &#125;</span><br><span class="line">  return console.log(&#96;fineapple이 있는 배열 [ $&#123;fruits&#125; ]&#96;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fruitsAdd(foods);</span><br><span class="line">fruitsAdd(foods2);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; indexOf 메소드 대신 ES7 Array.prototype.includes 메소드를 사용하면</span><br><span class="line">&#x2F;&#x2F; 가독성이 좋다</span><br><span class="line"></span><br><span class="line">const foods3 &#x3D; [&#39;milk&#39;, &#39;coffee&#39;];</span><br><span class="line"></span><br><span class="line">if (!foods3.includes(&#39;orange&#39;)) &#123;</span><br><span class="line">  foods3.push(&#39;orange&#39;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(foods3);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-Array-prototype-push-mutator-method-원본-배열을-직접-변경"><a href="#3-Array-prototype-push-mutator-method-원본-배열을-직접-변경" class="headerlink" title="3. Array.prototype.push (mutator method : 원본 배열을 직접 변경)"></a>3. Array.prototype.push (mutator method : 원본 배열을 직접 변경)</h3><ul>
+<li>인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고 변경된 length 값을 반환한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; Array.prototype.push &gt; mutator method</span><br><span class="line">&#x2F;&#x2F; 인수로 전달받은 모든 값을 원본 배열의 마지막 요소로 추가하고</span><br><span class="line">&#x2F;&#x2F; 변경된 length 값을 반환한다. </span><br><span class="line"></span><br><span class="line">const arrPush &#x3D; [1, 2];</span><br><span class="line"></span><br><span class="line">let result &#x3D; arrPush.push(3, 4);</span><br><span class="line">console.log(result); &#x2F;&#x2F; 4</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; push 메소드는 원본 배열을 직접 변경한다.</span><br><span class="line">console.log(arrPush); &#x2F;&#x2F; [ 1, 2, 3, 4 ]</span><br><span class="line"></span><br><span class="line">arrPush[arrPush.length] &#x3D; 5;</span><br><span class="line">console.log(arrPush); &#x2F;&#x2F; [ 1, 2, 3, 4, 5 ]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ES6 스프레드 문법</span><br><span class="line">const newArr &#x3D; [ ... arrPush, 6];</span><br><span class="line"></span><br><span class="line">console.log(newArr); &#x2F;&#x2F; [ 1, 2, 3, 4, 5, 6 ]</span><br></pre></td></tr></table></figure>
+<h3 id="4-Array-prototype-pop-mutator-method-원본-배열을-직접-변경"><a href="#4-Array-prototype-pop-mutator-method-원본-배열을-직접-변경" class="headerlink" title="4. Array.prototype.pop (mutator method : 원본 배열을 직접 변경)"></a>4. Array.prototype.pop (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.pop &gt; mutator method</span><br><span class="line">&#x2F;&#x2F; pop 메소드는 원본 배열에서 마지막 요소를 제거하고 제거한 요소를 반환한다.</span><br><span class="line">&#x2F;&#x2F; 원본 배열이 빈 배열이면 undefined를 반환.</span><br><span class="line"></span><br><span class="line">const arrPop &#x3D; [1, 2];</span><br><span class="line"></span><br><span class="line">let result2 &#x3D; arrPop.pop();</span><br><span class="line">console.log(result2); &#x2F;&#x2F; 2</span><br><span class="line"></span><br><span class="line">console.log(arrPop); &#x2F;&#x2F; [1]</span><br></pre></td></tr></table></figure>
+<h3 id="5-Array-prototype-unshift-mutator-method-원본-배열을-직접-변경"><a href="#5-Array-prototype-unshift-mutator-method-원본-배열을-직접-변경" class="headerlink" title="5. Array.prototype.unshift (mutator method : 원본 배열을 직접 변경)"></a>5. Array.prototype.unshift (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고 변경된 length값을 반환.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.unshift &gt; mutator method</span><br><span class="line">&#x2F;&#x2F; 인수로 전달받은 모든 값을 원본 배열의 선두에 요소로 추가하고</span><br><span class="line">&#x2F;&#x2F; 변경된 length 값을 반환한다.</span><br><span class="line"></span><br><span class="line">const arrUnshift &#x3D; [1, 2];</span><br><span class="line"></span><br><span class="line">let result3 &#x3D; arrUnshift.unshift(3, 4);</span><br><span class="line">console.log(result3); &#x2F;&#x2F; 4</span><br><span class="line"></span><br><span class="line">console.log(arrUnshift); &#x2F;&#x2F; [ 3, 4, 1, 2 ]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ES6 스프레드 문법</span><br><span class="line">const newArr2 &#x3D; [5, ...arrUnshift];</span><br><span class="line"></span><br><span class="line">console.log(newArr2); &#x2F;&#x2F; [ 5, 3, 4, 1, 2 ]</span><br></pre></td></tr></table></figure>
+<h3 id="6-Array-prototype-shift-mutator-method-원본-배열을-직접-변경"><a href="#6-Array-prototype-shift-mutator-method-원본-배열을-직접-변경" class="headerlink" title="6. Array.prototype.shift (mutator method : 원본 배열을 직접 변경)"></a>6. Array.prototype.shift (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>첫번째 요소를 제거하고 제거한 요소를 반환.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.shift &gt; mutator method</span><br><span class="line"></span><br><span class="line">const arrShift &#x3D; [1, 2];</span><br><span class="line"></span><br><span class="line">let result4 &#x3D; arrShift.shift();</span><br><span class="line">console.log(result4); &#x2F;&#x2F; 1</span><br><span class="line"></span><br><span class="line">console.log(arrShift); &#x2F;&#x2F; [2]</span><br></pre></td></tr></table></figure>
+<h3 id="7-Array-prototype-concat-accessor-method-새로운-배열을-생성하여-반환"><a href="#7-Array-prototype-concat-accessor-method-새로운-배열을-생성하여-반환" class="headerlink" title="7. Array.prototype.concat (accessor method : 새로운 배열을 생성하여 반환)"></a>7. Array.prototype.concat (accessor method : 새로운 배열을 생성하여 반환)</h3></li>
+<li>인수로 전달된 값들을 원본 배열의 마지막 요소로 추가한 새로운 배열을 반환. 배열을 해체하여 새로운 배열의 요소로 추가.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.concat &gt; accessor method</span><br><span class="line">&#x2F;&#x2F; 인수로 전달된 값들을 원본 배열의 마지막 요소로 추가한 새로운 배열을 반환.</span><br><span class="line">&#x2F;&#x2F; 인수로 전달한 값이 배열인 경우, 배열을 해체하여 새로운 배열의 요소로 추가한다.</span><br><span class="line"></span><br><span class="line">const arrConcat1 &#x3D; [1, 2];</span><br><span class="line">const arrConcat2 &#x3D; [3, 4];</span><br><span class="line"></span><br><span class="line">let result5 &#x3D; arrConcat1.concat(arrConcat2);</span><br><span class="line">console.log(result5); &#x2F;&#x2F; [ 1, 2, 3, 4 ]</span><br><span class="line"></span><br><span class="line">result5 &#x3D; arrConcat1.concat(5);</span><br><span class="line">console.log(result5); &#x2F;&#x2F; [1, 2, 5]</span><br><span class="line">console.log(arrConcat1); &#x2F;&#x2F; [ 1, 2 ]</span><br><span class="line"></span><br><span class="line">result5 &#x3D; arrConcat1.concat(arrConcat2, 5);</span><br><span class="line">console.log(result5); &#x2F;&#x2F; 12 + 34 + 5</span><br><span class="line"></span><br><span class="line">console.log(arrConcat1); &#x2F;&#x2F; [ 1, 2 ]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; push 와 unshift 메소드는 concat 메소드로 대체가능.</span><br><span class="line">&#x2F;&#x2F; push unshift &gt; 원본배열 직접변경 concat &gt; 새로운 배열 반환</span><br><span class="line">&#x2F;&#x2F; push unshift 원본 배열을 변수에 할당할 것</span><br><span class="line">&#x2F;&#x2F; concat 반환값을 반드시 변수에 할당받을 것</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; concat 메소드는 인수로 전달받은 배열을 해체하여 새로운 배열의 마지막 요소로 추가한다.</span><br><span class="line">let result6 &#x3D; [1, 2].concat(arrConcat2);</span><br><span class="line">console.log(result6); &#x2F;&#x2F; [ 1, 2, 3, 4 ]</span><br><span class="line"></span><br><span class="line">result6 &#x3D; result6.concat(5, 6);</span><br><span class="line">console.log(result6); &#x2F;&#x2F; [ 1, 2, 3, 4, 5, 6 ]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ES6 스프레드 문법</span><br><span class="line">let result7 &#x3D; [...[1, 2], ...[3, 4]];</span><br><span class="line">console.log(result7);</span><br></pre></td></tr></table></figure>
+<h3 id="8-Array-prototype-splice-mutator-method-원본-배열을-직접-변경"><a href="#8-Array-prototype-splice-mutator-method-원본-배열을-직접-변경" class="headerlink" title="8. Array.prototype.splice (mutator method : 원본 배열을 직접 변경)"></a>8. Array.prototype.splice (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>중간에 요소를 추가하거나, 중간에 있는 요소를 제거.</li>
+<li>3개의 매개변수가 있다.<ul>
+<li>start : 제거하기 시작할 인덱스. start만을 지정하면 원본배열의 start부터 모든 요소를 제거.</li>
+<li>deleteCount : start 부터 제거할 요소의 개수. (옵션)</li>
+<li>items : 제거한 위치에 삽입될 요소들의 목록. (옵션)<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; Array.prototype.splice</span><br><span class="line">&#x2F;&#x2F; .splice(start, deleteCount, items)</span><br><span class="line">&#x2F;&#x2F; mutator method</span><br><span class="line">const arrSplice &#x3D; [1, 2, 3, 4];</span><br><span class="line">const result8 &#x3D; arrSplice.splice(1, 2, 20, 30); &#x2F;&#x2F; 예상 index1인 2부터 2개인 2, 3이 지워지고 20, 30이 들어간다</span><br><span class="line"></span><br><span class="line">console.log(result8); &#x2F;&#x2F; 제거한 요소가 반환 2, 3</span><br><span class="line">console.log(arrSplice); &#x2F;&#x2F; 예상했던 결과인 1, 20, 30, 4가 나옴</span><br><span class="line"></span><br><span class="line">const result9 &#x3D; arrSplice.splice(1); &#x2F;&#x2F; 제거할 요소를 생략하면 첫번째 인수로 전달된 시작인덱스부터 모든 요소 제거</span><br><span class="line"></span><br><span class="line">console.log(arrSplice); &#x2F;&#x2F; [1] 남은 요소 원본 배열 반환</span><br><span class="line">console.log(result9); [20, 30, 4]</span><br></pre></td></tr></table></figure>
+<h3 id="9-Array-prototype-slice-accessor-method-새로운-배열을-생성하여-반환"><a href="#9-Array-prototype-slice-accessor-method-새로운-배열을-생성하여-반환" class="headerlink" title="9. Array.prototype.slice (accessor method : 새로운 배열을 생성하여 반환)"></a>9. Array.prototype.slice (accessor method : 새로운 배열을 생성하여 반환)</h3></li>
+</ul>
+</li>
+<li>인수로 전달된 범위의 요소들을 복사하여 반환.</li>
+<li>2개의 매개변수.<ul>
+<li>start : 복사를 시작할 인덱스. 음수의 경우 -2 는 배열의 마지막 2개의 요소를 반환한다.</li>
+<li>end : 복사를 종료할 인덱스. (옵션) 기본값은 length값.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3];</span><br><span class="line"></span><br><span class="line">let result &#x3D; arr.slice(0, 1);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.slice(1, 2);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">console.log(arr);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.slice(1);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.slice(-2);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
+<h3 id="10-Array-prototype-join-mutator-method-원본-배열을-직접-변경"><a href="#10-Array-prototype-join-mutator-method-원본-배열을-직접-변경" class="headerlink" title="10. Array.prototype.join (mutator method : 원본 배열을 직접 변경)"></a>10. Array.prototype.join (mutator method : 원본 배열을 직접 변경)</h3></li>
+</ul>
+</li>
+<li>모든 요소를 문자열로 변환한 후, 인수로 전달받은 값에 구분자로 연결한 문자열을 반환한다. 생략가능하며 기본은 , 이다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3, 4];</span><br><span class="line"></span><br><span class="line">let result &#x3D; arr.join();</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.join(&#39;&#39;);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.join(&#39;:&#39;);</span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
+<h3 id="11-Array-prototype-reverse-mutator-method-원본-배열을-직접-변경"><a href="#11-Array-prototype-reverse-mutator-method-원본-배열을-직접-변경" class="headerlink" title="11. Array.prototype.reverse (mutator method : 원본 배열을 직접 변경)"></a>11. Array.prototype.reverse (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>요소 순서를 반대로 변경한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3];</span><br><span class="line">const result &#x3D; arr.reverse();</span><br><span class="line"></span><br><span class="line">console.log(arr);</span><br><span class="line"></span><br><span class="line">console.log(result);</span><br></pre></td></tr></table></figure>
+<h3 id="12-Array-prototype-fill-mutator-method-원본-배열을-직접-변경"><a href="#12-Array-prototype-fill-mutator-method-원본-배열을-직접-변경" class="headerlink" title="12. Array.prototype.fill (mutator method : 원본 배열을 직접 변경)"></a>12. Array.prototype.fill (mutator method : 원본 배열을 직접 변경)</h3></li>
+<li>인수로 전달받은 값을 요소로 배열의 처음부터 끝까지 채운다.</li>
+<li>두번째 인수로 채우기 시작할 인덱스를 전달.</li>
+<li>세번째 인수로 요소 채우기를 멈출 인덱스를 전달.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3];</span><br><span class="line"></span><br><span class="line">arr.fill(0);</span><br><span class="line"></span><br><span class="line">console.log(arr);</span><br><span class="line"></span><br><span class="line">const arr2 &#x3D; [2, 3, 4];</span><br><span class="line"></span><br><span class="line">arr2.fill(0, 1);</span><br><span class="line"></span><br><span class="line">console.log(arr2);</span><br><span class="line"></span><br><span class="line">const arr3 &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line"></span><br><span class="line">arr3.fill(0, 1, 3);</span><br><span class="line"></span><br><span class="line">console.log(arr3);</span><br><span class="line"></span><br><span class="line">const arr20 &#x3D; new Array(20);</span><br><span class="line">console.log(arr20);</span><br><span class="line"></span><br><span class="line">const result &#x3D; arr20.fill(7);</span><br><span class="line"></span><br><span class="line">console.log(arr20);</span><br></pre></td></tr></table></figure></li>
+<li>fill 메소드로 요소를 채울 경우, 모든 요소를 하나의 값만으로 채울 수 밖에 없다는 단점이 있다. Array.from 정적메소드를 사용하여 두번째 인수로 전달한 함수를 통해 값을 만들면서 요소를 채울 수 있다. <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function generateSequences(length &#x3D; 0) &#123;</span><br><span class="line">  return Array.from(new Array(length), (_, i) &#x3D;&gt; i);</span><br><span class="line">&#125;</span><br><span class="line">console.log(generateSequences(3));</span><br></pre></td></tr></table></figure>
+<h3 id="13-Array-prototype-includes"><a href="#13-Array-prototype-includes" class="headerlink" title="13. Array.prototype.includes"></a>13. Array.prototype.includes</h3></li>
+<li>배열 내에 특정 요소가 포함되어 있는지 확인하여 true, false 반환</li>
+<li>첫번째 인수로 검색할 대상을 지정한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const arr &#x3D; [1, 2, 3];</span><br><span class="line"></span><br><span class="line">let result &#x3D; arr.includes(2);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.includes(100);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.includes(1, 1);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">result &#x3D; arr.includes(3, -1);</span><br><span class="line">console.log(result);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; indexOF 메소드를 사용해도 확인 가능하나,</span><br><span class="line">&#x2F;&#x2F; -1을 비교해야하고, NaN이 포함되어있는지 확인할 수 없다.</span><br><span class="line"></span><br><span class="line">console.log([NaN].indexOf(NaN) !&#x3D;&#x3D; -1);</span><br><span class="line">console.log([NaN].includes(NaN));</span><br></pre></td></tr></table></figure>
+<h3 id="14-Array-prototype-flat"><a href="#14-Array-prototype-flat" class="headerlink" title="14. Array.prototype.flat"></a>14. Array.prototype.flat</h3></li>
+<li>인수로 전달한 깊이만큼 재귀적으로 배열을 평탄화한다.</li>
+<li>인수로 중첩 배열을 평탄화 할 깊이를 전달할 수 있다. 생략할 경우 기본값은 1이다. Infinity를 전달하면 중첩 배열 모두를 평탄화한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">console.log([1, [2, 3, 4, 5]].flat());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 1단계 평탄화</span><br><span class="line">console.log([1, [2, [3, [4]]]].flat(1));</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 2단계 평탄화</span><br><span class="line">console.log([1, [2, [3, [4]]]].flat(2));</span><br><span class="line">console.log([1, [2, [3, [4]]]].flat().flat());</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 끝까지 평탄화</span><br><span class="line">console.log([1, [2, [3, [4]]]].flat(Infinity));</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="배열-고차-함수"><a href="#배열-고차-함수" class="headerlink" title="배열 고차 함수"></a>배열 고차 함수</h2><ul>
+<li>Higher-Order Function, HOF</li>
+</ul>
+<h3 id="1-Array-prototype-sort-mutator-method-원본-배열을-직접-변경"><a href="#1-Array-prototype-sort-mutator-method-원본-배열을-직접-변경" class="headerlink" title="1. Array.prototype.sort (mutator method : 원본 배열을 직접 변경)"></a>1. Array.prototype.sort (mutator method : 원본 배열을 직접 변경)</h3><ul>
+<li>배열의 요소를 정렬.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">const fruits &#x3D; [&#39;Banana&#39;, &#39;Orange&#39;, &#39;Apple&#39;];</span><br><span class="line"></span><br><span class="line">fruits.sort();</span><br><span class="line"></span><br><span class="line">console.log(fruits);</span><br><span class="line"></span><br><span class="line">const fruitsKr &#x3D; [&#39;바나나&#39;, &#39;오렌지&#39;, &#39;사과&#39;];</span><br><span class="line"></span><br><span class="line">fruitsKr.sort();</span><br><span class="line"></span><br><span class="line">console.log(fruitsKr);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 순서를 뒤집고 싶으면 (내림차순) reverse 메소드 사용</span><br><span class="line"></span><br><span class="line">fruits.reverse();</span><br><span class="line"></span><br><span class="line">console.log(fruits);</span><br><span class="line"></span><br><span class="line">let alphabet &#x3D; Array.from(&#39;gwpfjeyzhvacbmd&#39;);</span><br><span class="line"></span><br><span class="line">alphabet.sort().reverse();</span><br><span class="line"></span><br><span class="line">console.log(alphabet);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 객체를 요소로 갖는 배열을 정렬하는 예제</span><br><span class="line"></span><br><span class="line">const todos &#x3D; [</span><br><span class="line">  &#123; id: 4, content: &#39;JavaScript&#39;&#125;,</span><br><span class="line">  &#123; id: 1, content: &#39;HTML&#39;&#125;,</span><br><span class="line">  &#123; id: 2, content: &#39;CSS&#39;&#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">function compare(key) &#123;</span><br><span class="line">  return (a, b) &#x3D;&gt; (a[key] &gt; b[key] ? 1 : (a[key] &lt; b[key] ? -1 : 0));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">todos.sort(compare(&#39;id&#39;));</span><br><span class="line">console.log(todos);</span><br><span class="line"></span><br><span class="line">todos.sort(compare(&#39;content&#39;));</span><br><span class="line">console.log(todos);</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="2-Array-prototype-forEach"><a href="#2-Array-prototype-forEach" class="headerlink" title="2. Array.prototype.forEach"></a>2. Array.prototype.forEach</h3><ul>
+<li>배열을 순회하며 배열의 각 요소에 대하여 인수로 전달된 콜백 함수를 실행한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">const numbers &#x3D; [1, 2, 3];</span><br><span class="line">let pows &#x3D; [];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; for 문 사용</span><br><span class="line">for (let i &#x3D; 0; i &lt; numbers.length; i++) &#123;</span><br><span class="line">  pows.push(numbers[i] ** 2);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.log(pows);</span><br><span class="line"></span><br><span class="line">pows &#x3D; [];</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; forEach 메소드 사용</span><br><span class="line">numbers.forEach(item &#x3D;&gt; pows.push(item ** 2));</span><br><span class="line"></span><br><span class="line">console.log(pows);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 요소값, 인덱스, this</span><br><span class="line"></span><br><span class="line">[1, 2, 3].forEach((item, index, arr) &#x3D;&gt; &#123;</span><br><span class="line">  console.log(&#96;요소값: $&#123;item&#125;, 인덱스: $&#123;index&#125;, this: $&#123;arr&#125;&#96;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">const array1 &#x3D; [&#39;a&#39;, &#39;b&#39;, &#39;c&#39;];</span><br><span class="line"></span><br><span class="line">array1.forEach(element &#x3D;&gt; console.log(element));</span><br><span class="line"></span><br><span class="line">const items &#x3D; [&#39;item1&#39;, &#39;item2&#39;, &#39;item3&#39;];</span><br><span class="line">const copy &#x3D; [];</span><br><span class="line"></span><br><span class="line">items.forEach(item &#x3D;&gt; copy.push(item + &#96;0&#96;));</span><br><span class="line"></span><br><span class="line">console.log(copy);</span><br></pre></td></tr></table></figure>
+<h3 id="3-Array-prototype-map"><a href="#3-Array-prototype-map" class="headerlink" title="3. Array.prototype.map"></a>3. Array.prototype.map</h3></li>
+<li>배열을 순회하며 배열의 각 요소에 대하여 인수로 전달된 콜백 함수를 실행한다.</li>
+<li>콜백 함수의 반환값들로 구성된 새로운 배열을 반환한다.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Array.prototype.map()</span><br><span class="line"></span><br><span class="line">const arr1 &#x3D; [1, 4, 9, 16];</span><br><span class="line"></span><br><span class="line">const map1 &#x3D; arr1.map(x &#x3D;&gt; x * 2);</span><br><span class="line"></span><br><span class="line">console.log(map1);</span><br><span class="line"></span><br><span class="line">const map2 &#x3D; arr1.map(function (x) &#123;</span><br><span class="line">  return x + 2;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(map2);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; arr.map(callback(currentValue[, index[, array]])[, thisArg])</span><br><span class="line">&#x2F;&#x2F; arr.map (새로운 배열 요소를 생성하는 함수</span><br><span class="line">&#x2F;&#x2F; (3가지 인수&gt; 처리할 현재 요소, 처리할 현재 요소의 인덱스, map()을 호출한 배열), </span><br><span class="line">&#x2F;&#x2F; callback을 실행할 때 this로 사용되는 값)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 반환 값 &gt; 배열의 각 요소에 대해 실행한 callback의 결과를 모은 새로운 배열</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; map은 callback 함수의 각각에 요소에 대해 한번씩 순서대로 부른다.</span><br><span class="line">&#x2F;&#x2F; undefined도 포함해서 배열값이 들어있는 인덱스만 호출한다.</span><br><span class="line">&#x2F;&#x2F; 값이 삭제되거나 할당&#x2F;정의되지 않은 인덱스에 대해서는 호출하지 않는다.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; callback은 호출될 때 대상 요소의 값, 인덱스, 원본배열 3가지 인수를 전달 받는다.</span><br><span class="line">&#x2F;&#x2F; thisArg 가 전달된 경우 callback 함수의 this 값으로 사용된다.</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; map은 호출한 배열의 값을 변형하지 않는다. 단, callback 함수에 의해 변형될 수 있다.</span><br><span class="line">&#x2F;&#x2F; map이 처리할 요소의 범위는 첫 callback을 호출하기 전에 정해지고,</span><br><span class="line">&#x2F;&#x2F; 시작한 이후 추가된 요소들은 callback을 호출하지 않는다.</span><br><span class="line">&#x2F;&#x2F; 배열에 존재하는 요소들의 값이 바뀐경우, map이 방문하는 시점의 값이 callback에 전달된다.</span><br><span class="line"></span><br><span class="line">let numbers &#x3D; [1, 4, 9];</span><br><span class="line">let roots &#x3D; numbers.map(Math.sqrt); &#x2F;&#x2F; 제곱근</span><br><span class="line">&#x2F;&#x2F; numbers.map(item &#x3D;&gt; Math.sqrt(item));</span><br><span class="line"></span><br><span class="line">console.log(roots);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; map을 활용해 배열 속 객체를 재구성하기</span><br><span class="line"></span><br><span class="line">let kvArray &#x3D; [&#123;key: 1, value: 10&#125;,</span><br><span class="line">              &#123;key: 2, value: 20&#125;,</span><br><span class="line">              &#123;key: 3, value: 30&#125;];</span><br><span class="line"></span><br><span class="line">let reformattedArray &#x3D; kvArray.map(function(obj)&#123;</span><br><span class="line">  let rObj &#x3D; &#123;&#125;;</span><br><span class="line">  rObj[obj.key] &#x3D; obj.value;</span><br><span class="line">  return rObj;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(reformattedArray);</span><br><span class="line">console.log(kvArray);</span><br><span class="line"></span><br><span class="line">let kbArray2 &#x3D; [&#123;key: 1, value: 100&#125;,</span><br><span class="line">                &#123;key: 2, value: 200&#125;,</span><br><span class="line">                &#123;key: 3, value: 300&#125;];</span><br><span class="line"></span><br><span class="line">let newArray &#x3D; kbArray2.map(function(obj) &#123;</span><br><span class="line">  console.log(obj.key);</span><br><span class="line">  console.log(obj.value);</span><br><span class="line">  let rObj2 &#x3D; &#123;&#125;;</span><br><span class="line">  rObj2[obj.key] &#x3D; obj.value;</span><br><span class="line">  return rObj2</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(newArray);</span><br><span class="line"></span><br><span class="line">let newArray2 &#x3D; kbArray2.map(obj &#x3D;&gt; &#123;</span><br><span class="line">  let rObj &#x3D; &#123;&#125;;</span><br><span class="line">  rObj[obj.key] &#x3D; obj.value;</span><br><span class="line">  return rObj</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">console.log(newArray2);</span><br><span class="line"></span><br><span class="line">let numbers2 &#x3D; [1, 4, 9];</span><br><span class="line">let doubles &#x3D; numbers.map(function(num)&#123;</span><br><span class="line">  return num * 2;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(doubles);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; ASCII 인코딩 값을 요소로 갖는 배열</span><br><span class="line">let map &#x3D; Array.prototype.map;</span><br><span class="line">let a &#x3D; map.call(&#39;Hello World&#39;, function(x) &#123;return x.charCodeAt(0);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.log(a);</span><br></pre></td></tr></table></figure>
+<h3 id="4-Array-prototype-filter"><a href="#4-Array-prototype-filter" class="headerlink" title="4. Array.prototype.filter"></a>4. Array.prototype.filter</h3><ul>
+<li>배열을 순회하며 true인 배열 요소의 값만을 추출한 새로운 배열을 반환한다.<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">const numbers &#x3D; [1, 2, 3, 4, 5];</span><br><span class="line"></span><br><span class="line">const odds &#x3D; numbers.filter(item &#x3D;&gt; item % 2);</span><br><span class="line"></span><br><span class="line">console.log(odds);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 배열의 특정요소 제거하기</span><br><span class="line"></span><br><span class="line">const users &#x3D; [</span><br><span class="line">  &#123; id: 1, name: &#39;Lee&#39; &#125;,</span><br><span class="line">  &#123; id: 2, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 3, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 4, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 5, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 6, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 7, name: &#39;Kim&#39; &#125;,</span><br><span class="line">  &#123; id: 8, name: &#39;Kim&#39; &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">const userList &#x3D; users.filter(</span><br><span class="line">  function (item) &#123;</span><br><span class="line">    console.log(item);</span><br><span class="line">    console.log(item.id);</span><br><span class="line">    return item.id % 2;</span><br><span class="line">  &#125;</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">console.log(userList);</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/javascript/" rel="tag"># javascript</a>
+              <a href="/tags/blog/" rel="tag"># blog</a>
+              <a href="/tags/js/" rel="tag"># js</a>
+              <a href="/tags/front-end/" rel="tag"># front-end</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/03/post-1/" rel="prev" title="post">
+      <i class="fa fa-chevron-left"></i> post
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#배열"><span class="nav-number">1.</span> <span class="nav-text">배열</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#배열-생성"><span class="nav-number">1.1.</span> <span class="nav-text">배열 생성</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Array-of"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. Array.of</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Array-from"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. Array.from</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#배열-메소드"><span class="nav-number">1.2.</span> <span class="nav-text">배열 메소드</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Array-isArray"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. Array.isArray</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Array-prototype-indexOf"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. Array.prototype.indexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Array-prototype-push-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.3.</span> <span class="nav-text">3. Array.prototype.push (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Array-prototype-pop-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.4.</span> <span class="nav-text">4. Array.prototype.pop (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Array-prototype-unshift-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.5.</span> <span class="nav-text">5. Array.prototype.unshift (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Array-prototype-shift-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.6.</span> <span class="nav-text">6. Array.prototype.shift (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Array-prototype-concat-accessor-method-새로운-배열을-생성하여-반환"><span class="nav-number">1.2.7.</span> <span class="nav-text">7. Array.prototype.concat (accessor method : 새로운 배열을 생성하여 반환)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Array-prototype-splice-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.8.</span> <span class="nav-text">8. Array.prototype.splice (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Array-prototype-slice-accessor-method-새로운-배열을-생성하여-반환"><span class="nav-number">1.2.9.</span> <span class="nav-text">9. Array.prototype.slice (accessor method : 새로운 배열을 생성하여 반환)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Array-prototype-join-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.10.</span> <span class="nav-text">10. Array.prototype.join (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Array-prototype-reverse-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.11.</span> <span class="nav-text">11. Array.prototype.reverse (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Array-prototype-fill-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.2.12.</span> <span class="nav-text">12. Array.prototype.fill (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-Array-prototype-includes"><span class="nav-number">1.2.13.</span> <span class="nav-text">13. Array.prototype.includes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-Array-prototype-flat"><span class="nav-number">1.2.14.</span> <span class="nav-text">14. Array.prototype.flat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#배열-고차-함수"><span class="nav-number">1.3.</span> <span class="nav-text">배열 고차 함수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Array-prototype-sort-mutator-method-원본-배열을-직접-변경"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. Array.prototype.sort (mutator method : 원본 배열을 직접 변경)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Array-prototype-forEach"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. Array.prototype.forEach</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Array-prototype-map"><span class="nav-number">1.3.3.</span> <span class="nav-text">3. Array.prototype.map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Array-prototype-filter"><span class="nav-number">1.3.4.</span> <span class="nav-text">4. Array.prototype.filter</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mare nubium</p>
+  <div class="site-description" itemprop="description">Front-end web development를 공부합니다.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mare nubium</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
